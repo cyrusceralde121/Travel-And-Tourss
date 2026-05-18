@@ -1,0 +1,2144 @@
+.logo img {
+  /* This limits the height so it fits perfectly in your navbar */
+  height: 50px; 
+  width: auto; /* Maintains the original proportions */
+  display: block;
+}
+
+/* Optional: If you want to center it better */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+:root {
+
+  /**
+   * colors
+   */
+
+--united-nations-blue: hsl(348, 100%, 59%); /* Sakura Red (#ff2d55) */
+  --bright-navy-blue: hsl(348, 80%, 48%);    /* Deep Red */
+  --yale-blue: hsl(244, 48%, 15%);           /* Midnight Blue (Matches your hero) */
+  --blue-ncs: hsl(348, 100%, 59%);           /* More Sakura Red */
+  
+  /* Keep your neutrals */
+  --spanish-gray: hsl(0, 0%, 60%);
+  --cultured: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --jet: hsl(0, 0%, 20%);
+  /**
+   * typography
+   */
+
+  --ff-poppins: "Poppins", sans-serif;
+  --ff-montserrat: "Montserrat", sans-serif;
+
+  --fs-1: calc(20px + 3.5vw);
+  --fs-2: calc(18px + 1.6vw);
+  --fs-3: calc(16px + 0.45vw);
+  --fs-4: 15px;
+  --fs-5: 14px;
+  --fs-6: 13px;
+  --fs-7: 12px;
+  --fs-8: 11px;
+
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+  --fw-800: 800;
+
+  /**
+   * transition
+   */
+
+  --transition: 0.25s ease-in-out;
+
+  /**
+   * spacing
+   */
+
+  --section-padding: 60px;
+
+  /**
+   * border-radius
+   */
+
+  --radius-15: 15px;
+  --radius-25: 25px;
+
+}
+
+
+
+
+
+/*-----------------------------------*\
+ * #RESET
+\*-----------------------------------*/
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li { list-style: none; }
+
+a { text-decoration: none; }
+
+a,
+img,
+span,
+input,
+label,
+button,
+ion-icon { display: block; }
+
+input,
+button {
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+button { cursor: pointer; }
+
+input { width: 100%; }
+
+ion-icon { pointer-events: none; }
+
+html {
+  font-family: var(--ff-poppins);
+  scroll-behavior: smooth;
+}
+
+body { background: var(--white); }
+
+
+
+
+
+/*-----------------------------------*\
+ * #REUSED STYLE
+\*-----------------------------------*/
+
+.container { padding-inline: 15px; }
+
+.btn {
+  color: #ff2d55;
+  text-transform: uppercase;
+  font-size: var(--fs-5);
+  border-radius: 100px;
+  padding: var(--padding, 8px 18px);
+  border: var(--border-width, 2px) solid transparent;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: #ff2d55; /* Vibrant Sakura Red/Pink */
+  border-color: #ff2d55;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.btn-primary:is(:hover, :focus) {
+  background: #d81b43;
+  border-color: var(--yale-blue);
+}
+
+/* 2. SECONDARY BUTTON (View Details / Learn More) */
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #ffffff;
+  color: #0f0c29; /* Matches your Midnight Blue hero background */
+}
+.h1,
+.h2,
+.h3 {
+  font-weight: var(--fw-800);
+  font-family: var(--ff-montserrat);
+  text-transform: uppercase;
+}
+
+.h1 {
+  color: var(--white);
+  font-size: var(--fs-1);
+}
+
+.h2,
+.h3 { color: var(--gunmetal); }
+
+.h2 { font-size: var(--fs-2); }
+
+.h3 {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-700);
+}
+
+.section-subtitle {
+  color: #ff2d55;
+  font-size: var(--fs-5);
+  text-transform: uppercase;
+  font-family: var(--ff-montserrat);
+  margin-bottom: 8px;
+}
+
+.section-title { margin-bottom: 15px; }
+
+.section-text {
+  color: var(--black-coral);
+  margin-bottom: 30px;
+}
+
+.card-text {
+  color: var(--black-coral);
+  font-size: var(--fs-5);
+}
+
+/*-----------------------------------*\
+ * #HEADER
+\*-----------------------------------*/
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 61px;
+  z-index: 4;
+}
+
+.header-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: var(--transition);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+  padding-block: 15px;
+  z-index: 1;
+}
+
+.header.active .header-top {
+  position: fixed;
+  background: var(--gunmetal);
+}
+
+.header-top .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: flex-start;
+  align-items: center;
+}
+
+.helpline-box .wrapper { display: none; }
+
+.helpline-box .icon-box {
+  background: var(--bright-navy-blue);
+  padding: 6px;
+  border-radius: 50%;
+  color: var(--white);
+}
+
+.helpline-box .icon-box ion-icon { --ionicon-stroke-width: 40px; }
+
+.header-top .logo { margin-inline: auto; }
+
+.header-top .logo img { max-width: 100px; }
+
+.header-btn-group {
+  justify-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+}
+
+.search-btn,
+.nav-open-btn {
+  font-size: 30px;
+  color: inherit;
+}
+
+.search-btn { font-size: 20px; }
+
+.header-bottom { border-bottom: 1px solid hsla(0, 0%, 100%, 0.1); }
+
+.header-bottom .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 15px;
+}
+
+.social-list {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.social-link {
+  color: var(--white);
+  padding: 8px;
+  border: 1px solid hsla(0, 0%, 100%, 0.3);
+  border-radius: 50%;
+  font-size: 15px;
+  transition: var(--transition);
+}
+
+.social-link:is(:hover, :focus) { background: hsla(0, 0%, 100%, 0.2); }
+
+.header .btn { --padding: 4px 20px; }
+
+.header .navbar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  background: var(--white);
+  visibility: hidden;
+  pointer-events: none;
+  transition: 0.15s ease-in;
+  z-index: 3;
+}
+
+.navbar.active {
+  right: 0;
+  visibility: visible;
+  pointer-events: all;
+  transition: 0.25s ease-out;
+}
+
+.navbar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 15px;
+}
+
+.navbar-top .logo img { width: 150px; }
+
+.nav-close-btn {
+  font-size: 20px;
+  color: #ff2d55;
+}
+
+.nav-close-btn ion-icon { --ionicon-stroke-width: 80px; }
+
+.navbar-list { border-top: 1px solid hsla(0, 0%, 0%, 0.1); }
+
+.navbar-list li { border-bottom: 1px solid hsla(0, 0%, 0%, 0.1); }
+
+.navbar-link {
+  padding: 15px 20px;
+  color: var(--jet);
+  font-weight: var(--fw-500);
+  font-size: var(--fs-4);
+  transition: var(--transition);
+  text-transform: capitalize;
+}
+
+.navbar-link:is(:hover, :focus) { color: var(--bright-navy-blue); }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: var(--transition);
+}
+
+.overlay.active {
+  opacity: 0.7;
+  pointer-events: all;
+}
+
+
+
+
+
+/*-----------------------------------*\
+ * #HERO
+\*-----------------------------------*/
+.hero {
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); /* Elegant sunset gradient */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: hsla(0, 0%, 0%, 0.7);
+  background-blend-mode: overlay;
+  
+  /* Centering Logic */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  /* Space for your Navbar */
+  padding-top: 180px; /* Increased to push text below your menu */
+  padding-bottom: 100px;
+  min-height: 100vh; /* This makes it fill the whole screen beautifully */
+  text-align: center;
+}
+
+.hero-title { 
+  margin-top: 100px;
+  margin-bottom: 25px;
+  color: white;
+  font-size: 75px; /* Adjusting for that "Big Japan" feel */
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-weight: 800;
+  max-width: 800px; /* Prevents text from hitting the screen edges */
+}
+
+.hero-text {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 40px;
+  max-width: 650px; /* Makes the paragraph easier to read */
+  line-height: 1.6;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+
+
+/*-----------------------------------*\
+ * #POPULAR
+\*-----------------------------------*/
+
+/* POPULAR SECTION */
+
+/* POPULAR SECTION */
+
+.popular {
+  padding-block: 100px;
+  background: #f7f9fc;
+  padding-top: 50px;
+}
+
+.popular-card .card-img {
+  position: relative; /* Needed to position the badge */
+}
+
+.card-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ff2d55; /* Hot pink like your reference image */
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50%; /* Makes it a circle */
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.popular .container {
+  padding-inline: 30px;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+/* GRID */
+.popular-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+  list-style: none; /* Added to clean up bullet points */
+  padding: 0;
+}
+
+/* Fix for unequal heights: Make the list item a flex container */
+.popular-list > li {
+  display: flex;
+}
+
+/* CARD */
+.popular-card {
+  background: #fff;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensures card fills the grid column width */
+}
+
+.popular-card:hover {
+  transform: translateY(-8px);
+}
+
+/* IMAGE */
+.popular-card .card-img {
+  width: 100%;
+  height: 250px;
+  margin: 0;
+}
+
+.popular-card .card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* CONTENT */
+.popular-card .card-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* This pushes the price section to the bottom */
+}
+
+/* RATING */
+.popular-card .card-rating {
+  background: #0d6efd;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  width: max-content;
+}
+
+/* SUBTITLE */
+.popular-card .card-subtitle {
+  color: #0d6efd;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* TITLE */
+.popular-card .card-title {
+  font-size: 34px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.popular-card .card-title a {
+  color: #222;
+  text-decoration: none;
+}
+
+/* DESCRIPTION */
+.popular-card .card-text {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  flex-grow: 1; /* Helps maintain internal spacing */
+}
+
+/* META */
+.card-meta-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.meta-box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.meta-box ion-icon {
+  color: #0d6efd;
+}
+
+/* PRICE SECTION */
+.card-price {
+  padding: 0 25px 25px;
+  margin-top: auto; /* Final insurance to keep price at bottom */
+}
+
+.card-price .price {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0d6efd;
+  margin-bottom: 5px;
+}
+
+.card-price .price span {
+  font-size: 14px;
+  color: #666;
+}
+
+.card-price p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* BUTTON */
+.card-price .btn {
+  width: 100%;
+  border-radius: 12px;
+  padding: 12px;
+  border: none;
+  background-color: #0d6efd;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .popular-list {
+    grid-template-columns: 1fr;
+  }
+
+  .popular-card .card-title {
+    font-size: 26px;
+  }
+}
+
+/*-----------------------------------*\
+ * #MODAL STYLES - JAPAN THEME
+\*-----------------------------------*/
+
+.modal-overlay {
+  position: fixed;
+  inset: 0; /* Shorthand for top, left, width, height */
+  background: rgba(0, 0, 0, 0.85); /* Slightly darker for better focus */
+  display: none; 
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Ensure it stays above everything */
+  padding: 20px;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 650px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 35px;
+  font-weight: 300;
+  color: #333;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-modal:hover { color: #ff2d55; } /* Sakura Red Hover */
+
+/* QUICK INFO BANNER (Price, Pax, Duration) */
+.modal-info-banner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #f4f6f8;
+  padding: 15px;
+  border-radius: 15px;
+  margin-block: 25px;
+  border-left: 5px solid #ff2d55; /* Thematic accent */
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #1a1a2e;
+  font-weight: 600;
+}
+
+.info-item ion-icon {
+  color: #ff2d55;
+  font-size: 18px;
+}
+
+.price-highlight {
+  font-size: 22px;
+  color: #ff2d55 !important;
+  font-weight: 800;
+}
+
+/* GALLERY - Adjusted for better visual balance */
+.modal-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Better for two images as per your HTML */
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.modal-gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+/* INCLUSIONS LIST */
+.inclusion-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.inclusion-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-block: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 15px;
+  color: #444;
+}
+
+.inclusion-list li:last-child { border-bottom: none; }
+
+.inclusion-list ion-icon {
+  color: #ff2d55;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* BOOK NOW BUTTON IN MODAL */
+.modal-btn {
+  width: 100%;
+  padding: 15px;
+  background: #ff2d55;
+  color: white;
+  border-radius: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.modal-btn:hover { background: #d81b43; }
+
+/* SCROLLBAR STYLING */
+.modal-content::-webkit-scrollbar { width: 6px; }
+.modal-content::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/*-----------------------------------*\
+ * #PACKAGE
+\*-----------------------------------*/
+
+.package { padding-block: var(--section-padding); }
+
+.package-list { margin-bottom: 40px; }
+
+.package-list > li:not(:last-child) { margin-bottom: 30px; }
+
+.package-card {
+  background: var(--cultured);
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.package-card .card-banner { height: 250px; }
+
+.package-card .card-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.package-card .card-content { padding: 30px 20px; }
+
+.package-card .card-title { margin-bottom: 15px; }
+
+.package-card .card-text {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.card-meta-list {
+  background: var(--white);
+  max-width: max-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.15);
+  border-radius: 50px;
+}
+
+.card-meta-item { position: relative; }
+
+.card-meta-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: -1px;
+  bottom: 4px;
+  width: 1px;
+  background: hsla(0, 0%, 0%, 0.3);
+}
+
+.meta-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding-inline: 9px;
+  color: var(--black-coral);
+  font-size: var(--fs-8);
+}
+
+.meta-box > ion-icon {
+  color: var(--bright-navy-blue);
+  font-size: 13px;
+}
+
+.package-card .card-price {
+  background: #ff2d55;
+  color: var(--white);
+  padding: 25px 20px;
+  text-align: center;
+}
+
+.package-card .card-price .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px 15px;
+  margin-bottom: 10px;
+}
+
+.package-card .card-price .reviews { font-size: var(--fs-5); }
+
+.package-card .card-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  font-size: 14px;
+}
+
+.package-card .card-rating ion-icon:last-child { color: hsl(0, 0%, 80%); }
+
+.package-card .price {
+  font-size: var(--fs-2);
+  font-family: var(--ff-montserrat);
+  font-weight: var(--fw-800);
+  margin-bottom: 20px;
+}
+
+.package-card .price span {
+  font-size: var(--fs-7);
+  font-weight: initial;
+}
+
+.package .btn { margin-inline: auto; }
+
+
+
+
+
+/*-----------------------------------*\
+ * #GALLERY
+\*-----------------------------------*/
+
+.gallery { padding-block: var(--section-padding); }
+
+.gallery-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-15);
+  overflow: hidden;
+}
+
+.gallery-item:nth-child(3) { grid-area: 1 / 2 / 3 / 3; }
+
+.gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+/*-----------------------------------*\
+ * #CTA
+\*-----------------------------------*/
+
+.cta {
+  background: #ff2d55;
+  padding-block: var(--section-padding);
+}
+
+.cta :is(.section-subtitle, .section-title, .section-text) { color: var(--white); }
+
+.cta .section-text { font-size: var(--fs-5); }
+
+
+
+
+
+/*-----------------------------------*\
+ * #FOOTER
+\*-----------------------------------*/
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr; /* Gives the brand more room than contact */
+  gap: 80px; /* This creates the space between columns */
+  padding-block: 60px;
+}
+
+.footer-text {
+  color: #adb5bd;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+.footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+.footer-contact ion-icon {
+  color: #ff2d55; /* Your brand blue for the icons */
+  font-size: 20px;
+}
+
+/* Fix for mobile */
+@media (max-width: 768px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.contact-title {
+  position: relative;
+  font-family: var(--ff-montserrat);
+  font-weight: var(--fw-500);
+  margin-bottom: 30px;
+}
+
+.contact-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: var(--bright-navy-blue);
+}
+
+.contact-text {
+  font-size: var(--fs-5);
+  margin-bottom: 15px;
+  max-width: 200px;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.contact-item ion-icon { --ionicon-stroke-width: 40px; }
+
+.contact-link,
+address {
+  font-style: normal;
+  color: var(--gainsboro);
+  font-size: var(--fs-5);
+}
+
+.contact-link:is(:hover, :focus) { color: var(--white); }
+
+.form-text {
+  font-size: var(--fs-5);
+  margin-bottom: 20px;
+}
+
+.footer-form .input-field {
+  background: var(--white);
+  font-size: var(--fs-5);
+  padding: 15px 20px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.footer-form .btn { width: 100%; }
+
+.footer-bottom {
+  --gunmetal: hsl(205, 36%, 17%);
+  background: var(--gunmetal);
+  padding-block: 20px;
+  text-align: center;
+}
+
+.copyright {
+  color: var(--gainsboro);
+  font-size: var(--fs-5);
+  margin-bottom: 10px;
+}
+
+.copyright a {
+  color: inherit;
+  display: inline-block;
+}
+
+.copyright a:is(:hover, :focus) { color: var(--white); }
+
+.footer-bottom-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 21px;
+}
+
+.footer-bottom-list > li { position: relative; }
+
+.footer-bottom-list > li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -10px;
+  bottom: 3px;
+  width: 1px;
+  background: hsla(0, 0%, 100%, 0.2);
+}
+
+.footer-bottom-link {
+  color: var(--gainsboro);
+  font-size: var(--fs-7);
+  transition: var(--transition);
+}
+
+.footer-bottom-link:is(:hover, :focus) { color: var(--white); }
+
+
+
+
+
+/*-----------------------------------*\
+ * #GO TO TOP
+\*-----------------------------------*/
+
+.go-top {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  background: #ff2d55;
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.5);
+  opacity: 0;
+  transform: translateY(10px);
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.go-top.active {
+  opacity: 0.8;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.go-top:is(:hover, :focus) { opacity: 1; }
+
+
+
+
+
+/*-----------------------------------*\
+ * #MEDIA QUERIES
+\*-----------------------------------*/
+
+/**
+ * responsive for larger than 580px screen
+ */
+
+@media (min-width: 580px) {
+
+  /**
+   * REUSED STYLE
+   */
+
+  .container {
+    max-width: 580px;
+    margin-inline: auto;
+  }
+
+  .btn {
+    --fs-5: 16px;
+    --padding: 12px 30px;
+  }
+
+  section:not(.cta) :is(.section-subtitle, .section-title, .section-text) {
+    text-align: center;
+  }
+
+  .section-text { margin-bottom: 40px; }
+
+  .card-text { --fs-5: 15px; }
+
+
+
+  /**
+   * HEADER
+   */
+
+  .header { padding-top: 83px; }
+
+  .helpline-box .icon-box { padding: 14px; }
+
+  .header-top .logo img { max-width: unset; }
+
+  .search-btn { font-size: 30px; }
+
+  .nav-open-btn { font-size: 40px; }
+
+  .header .btn {
+    --fs-5: 14px;
+    --padding: 6px 20px;
+  }
+
+
+
+  /**
+   * HERO
+   */
+
+  .hero {
+    min-height: 800px;
+    padding-top: 85px;
+  }
+
+  .hero-text { --fs-5: 15px; }
+
+  .btn-group { gap: 20px; }
+
+
+
+  /**
+   * TOUR SEARCH
+   */
+
+  .tour-search-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-end;
+    gap: 15px;
+  }
+
+  .tour-search-form .input-wrapper { margin-bottom: 0; }
+
+  .tour-search-form .input-field { padding: 16px 20px; }
+
+  .tour-search .btn {
+    grid-column: span 2;
+    margin-top: 20px;
+  }
+
+
+
+  /**
+   * POPULAR
+   */
+
+  .popular-card .card-content { right: auto; }
+
+
+
+  /**
+   * FOOTER
+   */
+
+  footer .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  
+  .footer-form { grid-column: span 2; }
+
+  .footer-bottom { text-align: left; }
+
+  .copyright { margin-bottom: 0; }
+
+  .footer-bottom-list { justify-content: flex-end; }
+
+}
+
+
+
+
+
+/**
+ * responsive for larger than 768px screen
+ */
+
+@media (min-width: 768px) {
+
+  /**
+   * CUSTOM PROPERTY
+   */
+
+  :root {
+
+    /**
+     * typography
+     */
+
+    --fs-5: 15px;
+
+  }
+
+
+
+  /**
+   * REUSED STYLE
+   */
+
+  .container { max-width: 800px; }
+
+  .section-text {
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+
+
+  /**
+   * HEADER
+   */
+
+  .helpline-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .helpline-box .wrapper {
+    display: block;
+    color: var(--white);
+    font-size: var(--fs-6);
+  }
+
+  .social-list { gap: 10px; }
+
+
+
+  /**
+   * POPULAR
+   */
+
+  .popular-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .popular-list > li:not(:last-child) { margin-bottom: 0; }
+
+  .popular-card .card-content { right: 20px; }
+
+
+
+  /**
+   * PACKAGE
+   */
+
+  .package-list { margin-bottom: 50px; }
+
+  .package-list > li:not(:last-child) { margin-bottom: 40px; }
+
+  .package-card {
+    display: grid;
+    grid-template-columns: 1.3fr 1.5fr 1fr;
+  }
+
+  .package-card .card-banner { height: 100%; }
+
+  .package-card .card-content { padding: 40px; }
+
+  .package-card .card-price {
+    display: grid;
+    place-content: center;
+  }
+
+  .package-card .card-price .wrapper { margin-bottom: 15px; }
+
+
+
+  /**
+   * GALLERY
+   */
+
+  .gallery { padding-bottom: calc(var(--section-padding * 2)); }
+
+  .gallery-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .gallery-image { border-radius: var(--radius-25); }
+
+
+
+  /**
+   * CTA
+   */
+
+  .cta .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cta-content { width: calc(100% - 225px); }
+
+  .cta .section-text { margin-inline: 0; }
+
+
+
+  /**
+   * FOOTER
+   */
+
+  .form-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-form .input-field { margin-bottom: 0; }
+
+  .footer-form .btn { width: max-content; }
+
+}
+
+
+
+
+
+/**
+ * responsive for larger than 992px screen
+ */
+
+@media (min-width: 992px) {
+
+  /**
+   * REUSED STYLE
+   */
+
+  .container { max-width: 1050px; }
+
+
+
+  /**
+   * HEADER
+   */
+
+  .header.active .header-top {
+    position: unset;
+    background: unset;
+  }
+
+  .nav-open-btn,
+  .navbar-top { display: none; }
+
+  .header-bottom { border-bottom: none; }
+
+  .header.active .header-bottom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    color: var(--onyx);
+    box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.08);
+    transition: var(--transition);
+  }
+
+  .header-bottom .container { padding-block: 0; }
+
+  .header .navbar { all: unset; }
+
+  .navbar-list {
+    border-top: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar-list li { border-bottom: none; }
+
+  .navbar-link {
+    color: var(--white);
+    --fs-4: 16px;
+    font-weight: unset;
+    text-transform: uppercase;
+    padding: 20px 15px;
+  }
+
+  .header.active .navbar-link { color: var(--onyx); }
+
+  .header.active .navbar-link:is(:hover, :focus) { color: var(--bright-navy-blue); }
+
+  .header.active .social-link {
+    color: var(--onyx);
+    border-color: hsla(0, 0%, 0%, 0.15);
+  }
+
+  .overlay { display: none; }
+
+
+
+  /**
+   * HERO
+   */
+
+  .hero .container { max-width: 740px; }
+
+
+
+  /**
+   * TOUR SEARCH
+   */
+
+  .tour-search-form { grid-template-columns: repeat(5, 1fr); }
+
+  .tour-search .btn {
+    --padding: 15px;
+    grid-column: unset;
+    margin-top: 0;
+  }
+
+
+
+  /**
+   * POPULAR
+   */
+
+  .popular-list { grid-template-columns: repeat(3, 1fr); }
+
+
+
+  /**
+   * PACKAGE
+   */
+
+  .meta-box { --fs-8: 13px; }
+
+  .meta-box > ion-icon { font-size: 15px; }
+
+
+
+  /**
+   * CTA 
+   */
+
+  .cta .section-title { max-width: 25ch; }
+
+
+
+  /**
+   * FOOTER
+   */
+
+  .footer-top .container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+  }
+
+  .footer-form { grid-column: unset; }
+
+  .form-wrapper { flex-direction: column; }
+
+  .footer-form .btn { width: 100%; }
+
+}
+
+
+
+
+
+/**
+ * responsive for larger than 1200px screen
+ */
+
+@media (min-width: 1200px) {
+
+  /**
+   * CUSTOM PROPERTY
+   */
+
+  :root {
+
+    /**
+     * spacing
+     */
+
+    --section-padding: 100px;
+
+  }
+
+
+
+  /**
+   * REUSED STYLE
+   */
+
+  .container { max-width: 1180px; }
+
+}
+
+/* FORCE THEME COLOR UPDATE */
+
+/* 1. Price Text */
+.popular-card .price {
+  color: #ff2d55 !important;
+}
+
+/* 2. Rating Badge Background */
+.popular-card .card-rating {
+  background-color: #ff2d55 !important;
+}
+
+/* 3. Secondary Button (View Details) - Outline Style */
+.popular-card .btn-secondary {
+  border: 2px solid #ff2d55 !important;
+  color: #ff2d55 !important;
+  background-color: transparent !important;
+}
+
+.popular-card .btn-secondary:hover {
+  background-color: #ff2d55 !important;
+  color: #ffffff !important;
+}
+
+/* 4. Primary Button (Book Now) - Solid Style */
+.popular-card .btn-primary {
+  background-color: #ff2d55 !important;
+  border-color: #ff2d55 !important;
+  color: #ffffff !important;
+}
+
+.popular-card .btn-primary:hover {
+  background-color: #d81b43 !important; /* Slightly darker red on hover */
+}
+
+/* 5. Icons in the Meta Box */
+.popular-card .meta-box ion-icon {
+  color: #ff2d55 !important;
+}
+
+
+.header-top {
+  padding-block: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-top .container {
+  display: flex;
+  justify-content: space-between; /* This pushes elements to the edges */
+  align-items: center;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.contact-link:hover { color: #ff2d55; }
+
+.social-list {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  color: white;
+  font-size: 18px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  transition: 0.3s;
+}
+
+.social-link:hover {
+  background: #ff2d55;
+  transform: translateY(-2px);
+}
+
+/* Target the logo in the bottom part of the header */
+.header-bottom .logo img {
+  width: 100px; /* Increased from the tiny default size in image_d20731.jpg */
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  
+  /* Adds a premium feel and makes the small details visible */
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); 
+}
+
+/* Optional: Slight zoom when the user hovers over the brand */
+.header-bottom .logo:hover img {
+  transform: scale(1.1);
+}
+
+/* Ensure the navbar items align vertically with the bigger logo */
+.header-bottom .container {
+  display: flex;
+  align-items: center; 
+  padding-block: 20px; /* Gives the logo more room so it doesn't feel squashed */
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+}
+
+.footer-bottom-list {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-bottom-link {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.footer-bottom-link:hover {
+  color: #ff2d55; /* Sakura Red hover effect */
+}
+
+/* Fix for the Logo in the footer top */
+.footer-brand .logo img {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+
+/* 1. Alignment Logic */
+.footer-brand-wrapper {
+  display: flex;
+  align-items: center; /* Centers the text vertically next to the logo */
+  gap: 30px;  
+  margin-left: 40px;         /* Creates space between logo and text */
+}
+
+/* 2. Logo Sizing & Cleanup */
+.footer-brand .logo img {
+  width: 150px;        /* Makes the logo nice and big */
+  height: auto;
+  display: block;
+  
+  /* Cleans up the square edges from your logo file */
+  background-color: #ffffff; 
+  border-radius: 50%;  
+  padding: 8px;
+}
+
+/* 3. Text Styling */
+/* This forces the Company Name to be visible */
+.brand-name {
+  color: #1a1a2e !important; /* Midnight Navy to contrast the white background */
+  font-family: var(--ff-montserrat); /* Using the Montserrat font from your :root */
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block !important;
+  margin-bottom: 5px;
+}
+
+/* This targets the description text below it */
+.footer-text {
+  color: #ff2d55 !important; /* Sakura Red */
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 !important;
+}
+
+/* Layout Logic */
+.footer-top .container {
+  display: flex;
+  justify-content: space-between; /* Pushes brand left, contact right */
+  align-items: flex-start;
+  gap: 50px;
+  padding-block: 10px !important;
+}
+
+/* Brand Side Styling */
+.footer-brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.brand-name {
+  color: #1a1a2e !important; /* Midnight Navy for visibility */
+  font-size: 26px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2px !important;
+}
+
+/* Contact Side Styling */
+.footer-contact {
+  max-width: 300px;
+}
+
+.contact-title {
+  color: #1a1a2e;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px !important;
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* Red underline for the contact title */
+.contact-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #ff2d55; /* Sakura Red */
+  margin-top: 5px;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px !important;
+  color: #333333;
+  font-size: 15px;
+}
+
+.contact-list ion-icon {
+  color: #ff2d55; /* Matches your buttons */
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contact-link {
+  color: inherit;
+  transition: 0.3s;
+}
+
+.contact-link:hover {
+  color: #ff2d55;
+}
+
+/* Responsive Fix: Stacks them on mobile */
+@media (max-width: 992px) {
+  .footer-top .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-brand-wrapper {
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  .contact-title::after {
+    margin-inline: auto;
+  }
+}
+
+.header-top .container {
+  position: relative; /* Becomes the anchor for the title */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px; /* Ensure there is a set height for vertical centering */
+}
+
+.header-brand-name {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* Moves it to the exact mathematical center */
+  width: max-content;
+  text-align: center;
+  z-index: 10;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+/*-----------------------------------*\
+   * #MISHIMA VS FURANO FLOWER GUIDE STYLES
+  \*-----------------------------------*/
+
+  .flower-guide-section {
+    padding-block: 60px;
+    background-color: #f9fbfd;
+    font-family: sans-serif; /* Fallback - will inherit your theme's font */
+  }
+
+  .flower-guide-section .container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 15px;
+  }
+
+  .section-title-wrapper {
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  .section-subtitle {
+    color: #ff2d55; /* Your signature Sakura Red */
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    margin-top: 0;
+  }
+
+  .section-title {
+    color: #1a1a2e; /* Midnight Navy */
+    font-size: 32px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    margin-top: 0;
+  }
+
+  .section-text {
+    color: #555555;
+    max-width: 600px;
+    margin-inline: auto;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Layout Grid Configuration */
+  .guide-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+  }
+
+  /* Card Component Foundations */
+  .guide-card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    border: 1px solid #eef2f5;
+    overflow: hidden;
+  }
+
+  /* Status Sticky Badges */
+  .card-status-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 5;
+  }
+  .status-now { background: rgba(46, 204, 113, 0.15); color: #27ae60; }
+  .status-soon { background: rgba(241, 196, 15, 0.15); color: #d4ac0d; }
+
+  /* Headers Inside Cards */
+  .guide-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .guide-card-header name, 
+  .guide-card-header ion-icon {
+    font-size: 36px;
+    color: #ff2d55;
+  }
+  
+  .card-location {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #777777;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+  
+  .card-title {
+    font-size: 22px;
+    color: #1a1a2e;
+    font-weight: 700;
+    margin: 2px 0 0 0;
+  }
+
+  /* Premium Image Formatting */
+  .card-banner {
+    width: 100%;
+    height: 200px; /* Synchronized visual balance */
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 0 0 20px 0;
+  }
+
+  .card-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents stretching */
+    transition: transform 0.5s ease;
+  }
+
+  .guide-card:hover .card-banner img {
+    transform: scale(1.05); /* Interactive subtle zoom */
+  }
+
+  /* Promotional Info Banner Elements */
+  .banner-box {
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+  }
+  .focus-banner { background: #f4f7f6; border-left: 4px solid #27ae60; color: #1a1a2e; }
+  .alert-banner { background: #fff9e6; border-left: 4px solid #f1c40f; color: #7d6608; }
+  
+  .banner-item { display: flex; align-items: center; gap: 8px; }
+  .banner-item ion-icon { color: #ff2d55; font-size: 16px; }
+  .target-dates { color: #ff2d55; font-weight: 700; }
+
+  .card-intro {
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+  }
+
+  /* Checklist Component Styles */
+  .highlight-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+  }
+  
+  .highlight-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #444444;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  
+  .highlight-list ion-icon { 
+    color: #27ae60; 
+    font-size: 18px; 
+    flex-shrink: 0;
+  }
+
+  /* Travel Logistics dashed info box */
+  .tips-box {
+    background: #fdfefe;
+    border: 1px dashed #cbd5e0;
+    padding: 18px;
+    border-radius: 12px;
+  }
+  
+  .tips-box h4 {
+    font-size: 14px;
+    color: #1a1a2e;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+  }
+  
+  .tips-box h4 ion-icon { color: #ff2d55; }
+  
+  .tips-box ul { 
+    padding-left: 20px; 
+    font-size: 13px; 
+    color: #666666; 
+    line-height: 1.6; 
+    margin: 0;
+  }
+
+  /* Micro Timeline Layout for Furano */
+  .mini-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .timeline-step {
+    padding-left: 15px;
+    border-left: 2px solid #e2e8f0;
+    position: relative;
+  }
+  
+  .step-time {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a2e;
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .timeline-step p { 
+    font-size: 13px; 
+    color: #666666; 
+    line-height: 1.5; 
+    margin: 0;
+  }
+  
+  .peak-step { border-left-color: #ff2d55; }
+  .peak-step .step-time { color: #ff2d55; }
+
+  /* Premium Callout Badge for Contextual Tips */
+  .recommendation-badge {
+    display: flex;
+    gap: 15px;
+    background: #1a1a2e; /* Midnight Navy theme color */
+    padding: 18px;
+    border-radius: 12px;
+    color: #ffffff;
+    align-items: center;
+  }
+  
+  .recommendation-badge flex-container,
+  .recommendation-badge ion-icon {
+    font-size: 24px;
+    color: #ff2d55;
+    background: rgba(255, 45, 85, 0.1);
+    padding: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  
+  .recommendation-badge h5 { 
+    color: #ff2d55; 
+    font-size: 14px; 
+    font-weight: 700; 
+    margin: 0 0 2px 0;
+    text-transform: uppercase;
+  }
+  
+  .recommendation-badge p { 
+    font-size: 13px; 
+    color: rgba(255, 255, 255, 0.8); 
+    line-height: 1.4; 
+    margin: 0;
+  }
+
+  /* Fully Responsive Breakpoints */
+  @media (max-width: 992px) {
+    .guide-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 575px) {
+    .guide-card { padding: 25px; }
+    .card-status-badge { position: static; display: inline-block; margin-bottom: 15px; }
+    .recommendation-badge { flex-direction: column; text-align: center; }
+  }
