@@ -258,9 +258,16 @@ body { background: var(--white); }
   justify-self: flex-end;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: var(--white);
 }
+
+/* Keeps the button tight on phone screens */
+  .header-btn-group .btn-primary {
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+  }
 
 .search-btn,
 .nav-open-btn {
@@ -2142,3 +2149,153 @@ address {
     .card-status-badge { position: static; display: inline-block; margin-bottom: 15px; }
     .recommendation-badge { flex-direction: column; text-align: center; }
   }
+
+  /*-----------------------------------*\
+ * #MOBILE RESPONSIVE STYLES
+\*-----------------------------------*/
+
+@media (max-width: 992px) {
+  /* 1. Header Top Area (Email, Name, FB Icon) */
+  .header-top .container {
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+    padding-block: 15px;
+    text-align: center;
+  }
+  
+  /* Un-dock the centered absolute title we fixed earlier */
+  .header-brand-name {
+    position: static;
+    transform: none;
+    margin-block: 5px;
+  }
+
+  /* 2. Hero Section Typography */
+  .hero-title {
+    font-size: 38px !important; /* Shrinks your giant "DISCOVER THE TIMELESS MAGIC" title */
+    line-height: 1.2;
+  }
+  
+  .hero-text {
+    font-size: 15px !important;
+    padding-inline: 10px;
+  }
+
+  /* 3. Grids (Packages & Flower Guides) */
+  .guide-grid, 
+  .package-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr !important; /* Forces 2 or 3-column structures into a clean single column */
+    gap: 30px;
+  }
+}
+
+@media (max-width: 575px) {
+  /* 4. Ultra-Mobile Tweaks (Small Phones) */
+  .container {
+    padding-inline: 20px;
+  }
+
+  .hero-title {
+    font-size: 28px !important; /* Extra small for tiny screens */
+  }
+
+  /* Adjust Modal Overlays for vertical scrolling on mobile */
+  .modal-content {
+    padding: 20px;
+    width: 95%;
+    max-height: 85vh;
+  }
+
+  .modal-info-banner {
+    flex-direction: column; /* Stacks Price, Pax, Duration vertically */
+    gap: 12px;
+    text-align: center;
+    border-left: none;
+    border-top: 4px solid #ff2d55;
+  }
+
+  .guide-card {
+    padding: 20px;
+  }
+
+  .card-status-badge {
+    position: static; /* Moves the 'Now In Season' badge inline so it doesn't overlap text */
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+
+  .recommendation-badge {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+/*-----------------------------------*\
+ * #MOBILE ACTIONS ROW ALIGNMENT
+\*-----------------------------------*/
+
+/* Desktop styling helper: Hides the inline mobile FB icon on wide screens */
+.mobile-social-link {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  /* Hide the old top-right social list if it's lingering */
+  .header-top .social-list {
+    display: none !important;
+  }
+
+  /* Force the right box elements to sit completely side-by-side */
+  .header-btn-group {
+    display: flex !important;
+    align-items: center !important; /* Perfect vertical alignment */
+    gap: 15px; /* Clean breathing room between elements */
+  }
+
+  /* Target the new Facebook anchor button layout */
+  .mobile-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 22px; /* Slightly scaled down for mobile balance */
+    background: rgba(255, 255, 255, 0.1);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+
+  .mobile-social-link:hover {
+    background: #ff2d55; /* Changes to Sakura Red on hover */
+  }
+
+  /* Keep your Message Us button perfectly proportioned */
+  .header-btn-group .btn-primary {
+    padding: 8px 14px !important;
+    font-size: 11px !important;
+    white-space: nowrap;
+    margin: 0 !important; /* Clears floating defaults */
+  }
+
+  /* Align the Hamburger bars */
+  .nav-open-btn {
+    font-size: 26px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Removes the border line between the top and bottom header sections */
+  .header-top, 
+  .header-bottom {
+    border: none !important;
+    border-bottom: none !important;
+  }
+}
+
