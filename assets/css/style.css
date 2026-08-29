@@ -429,19 +429,21 @@ body {
   margin-top: 40px;
 }
 
-.popular-list > li {
-  display: flex;
+/* CENTER SINGLE CARD */
+.popular-list {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin-top: 40px !important;
+  padding: 0 !important;
+  list-style: none !important;
 }
 
-.popular-card {
-  background: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+.popular-list > li {
+  width: 100% !important;
+  max-width: 360px !important; /* Locks optimal card width */
+  margin: 0 auto !important;
 }
 
 .popular-card:hover {
