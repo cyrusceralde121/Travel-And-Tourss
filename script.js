@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
   viewBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      e.stopPropagation();
       closeAllModals();
 
       const targetId = btn.getAttribute("data-target");
@@ -40,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
   closeBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      e.stopPropagation();
       closeAllModals();
     });
   });
@@ -65,74 +63,135 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // ==========================================
-  // 2. PARROTS SLIDE VIEWER (P1.jpg to P9.jpg)
+  // 2. MODAL SLIDE VIEWER (INSIDE MODAL)
   // ==========================================
-  const totalSlides = 9;
-  let currentSlideIndex = 1;
+  const modalSlideImg = document.getElementById("hokkaido-active-slide");
+  const modalCounterEl = document.getElementById("current-slide-num");
+  const modalThumbs = document.querySelectorAll(".slide-viewer-wrapper .slide-thumbnails .thumb");
+  const modalPrevBtn = document.querySelector(".slide-viewer-wrapper .prev-slide");
+  const modalNextBtn = document.querySelector(".slide-viewer-wrapper .next-slide");
 
-  const mainSlideImg = document.getElementById("pvk-main-display");
-  const counterEl = document.getElementById("pvk-curr-page");
-  const thumbs = document.querySelectorAll(".pvk-thumb-item");
-  const prevBtn = document.getElementById("pvk-btn-prev");
-  const nextBtn = document.getElementById("pvk-btn-next");
+  let modalSlideIndex = 1;
+  const modalTotalSlides = 9;
 
-  function updateSlide(index) {
-    if (!mainSlideImg) return;
+  function updateModalSlide(index) {
+    if (!modalSlideImg) return;
 
-    if (index < 1) index = totalSlides;
-    if (index > totalSlides) index = 1;
+    if (index < 1) index = modalTotalSlides;
+    if (index > modalTotalSlides) index = 1;
 
-    currentSlideIndex = index;
+    modalSlideIndex = index;
 
-    // Smooth fade transition
-    mainSlideImg.style.opacity = "0.3";
+    modalSlideImg.style.opacity = "0.3";
     setTimeout(() => {
-      mainSlideImg.src = `./assets/images/P${currentSlideIndex}.jpg`;
-      mainSlideImg.style.opacity = "1";
+      // Use your modal image source format
+      modalSlideImg.src = `./assets/images/hokkaido-slide-${modalSlideIndex}.jpg`;
+      modalSlideImg.style.opacity = "1";
     }, 120);
 
-    if (counterEl) counterEl.textContent = currentSlideIndex;
+    if (modalCounterEl) modalCounterEl.textContent = modalSlideIndex;
 
-    thumbs.forEach((thumb) => {
-      const thumbIndex = parseInt(thumb.dataset.idx, 10);
-      if (thumbIndex === currentSlideIndex) {
-        thumb.classList.add("pvk-is-active");
+    modalThumbs.forEach((thumb) => {
+      const thumbIndex = parseInt(thumb.dataset.index, 10);
+      if (thumbIndex === modalSlideIndex) {
+        thumb.classList.add("active");
         thumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
       } else {
-        thumb.classList.remove("pvk-is-active");
+        thumb.classList.remove("active");
       }
     });
 
     if (lightboxOverlay && lightboxOverlay.style.display === "flex") {
-      syncLightbox();
+      syncLightbox(modalSlideIndex);
     }
   }
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      updateSlide(currentSlideIndex - 1);
+  if (modalPrevBtn) {
+    modalPrevBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      updateModalSlide(modalSlideIndex - 1);
     });
   }
 
-  if (nextBtn) {
-    nextBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      updateSlide(currentSlideIndex + 1);
+  if (modalNextBtn) {
+    modalNextBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      updateModalSlide(modalSlideIndex + 1);
     });
   }
 
-  thumbs.forEach((thumb) => {
+  modalThumbs.forEach((thumb) => {
     thumb.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const selectedIndex = parseInt(thumb.dataset.idx, 10);
-      updateSlide(selectedIndex);
+      e.preventDefault();
+      const selectedIndex = parseInt(thumb.dataset.index, 10);
+      updateModalSlide(selectedIndex);
     });
   });
 
 
   // ==========================================
-  // 3. FULLSCREEN LIGHTBOX CONTROLS
+  // 3. OUTSIDE MIDDLE SECTION SLIDE VIEWER (P1-P9)
+  // ==========================================
+  const pvkMainImg = document.getElementById("pvk-main-display");
+  const pvkCounter = document.getElementById("pvk-curr-page");
+  const pvkThumbs = document.querySelectorAll(".pvk-thumb-item");
+  const pvkPrevBtn = document.getElementById("pvk-btn-prev");
+  const pvkNextBtn = document.getElementById("pvk-btn-next");
+
+  let pvkIndex = 1;
+  const pvkTotal = 9;
+
+  function updatePvkSlide(index) {
+    if (!pvkMainImg) return;
+
+    if (index < 1) index = pvkTotal;
+    if (index > pvkTotal) index = 1;
+
+    pvkIndex = index;
+
+    pvkMainImg.style.opacity = "0.3";
+    setTimeout(() => {
+      pvkMainImg.src = `./assets/images/P${pvkIndex}.jpg`;
+      pvkMainImg.style.opacity = "1";
+    }, 120);
+
+    if (pvkCounter) pvkCounter.textContent = pvkIndex;
+
+    pvkThumbs.forEach((t) => {
+      const idx = parseInt(t.dataset.idx, 10);
+      if (idx === pvkIndex) {
+        t.classList.add("pvk-is-active");
+        t.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      } else {
+        t.classList.remove("pvk-is-active");
+      }
+    });
+  }
+
+  if (pvkPrevBtn) {
+    pvkPrevBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      updatePvkSlide(pvkIndex - 1);
+    });
+  }
+
+  if (pvkNextBtn) {
+    pvkNextBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      updatePvkSlide(pvkIndex + 1);
+    });
+  }
+
+  pvkThumbs.forEach((t) => {
+    t.addEventListener("click", (e) => {
+      e.preventDefault();
+      updatePvkSlide(parseInt(t.dataset.idx, 10));
+    });
+  });
+
+
+  // ==========================================
+  // 4. FULLSCREEN LIGHTBOX CONTROLS
   // ==========================================
   const openLbBtn = document.getElementById("open-slide-fullscreen");
   const closeLbBtn = document.getElementById("close-slide-fullscreen");
@@ -142,22 +201,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevLbBtn = document.querySelector(".prev-lb");
   const nextLbBtn = document.querySelector(".next-lb");
 
-  function syncLightbox() {
+  function syncLightbox(idx = modalSlideIndex) {
     if (!lightboxImg) return;
-    lightboxImg.src = `./assets/images/P${currentSlideIndex}.jpg`;
-    if (lbCounter) lbCounter.textContent = currentSlideIndex;
+    lightboxImg.src = `./assets/images/hokkaido-slide-${idx}.jpg`;
+    if (lbCounter) lbCounter.textContent = idx;
   }
 
   if (openLbBtn && lightboxOverlay) {
     openLbBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      syncLightbox();
+      e.preventDefault();
+      syncLightbox(modalSlideIndex);
       lightboxOverlay.style.display = "flex";
     });
 
     if (closeLbBtn) {
       closeLbBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
+        e.preventDefault();
         lightboxOverlay.style.display = "none";
       });
     }
@@ -170,20 +229,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (prevLbBtn && nextLbBtn) {
       prevLbBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        updateSlide(currentSlideIndex - 1);
+        e.preventDefault();
+        updateModalSlide(modalSlideIndex - 1);
       });
 
       nextLbBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        updateSlide(currentSlideIndex + 1);
+        e.preventDefault();
+        updateModalSlide(modalSlideIndex + 1);
       });
     }
   }
 
 
   // ==========================================
-  // 4. NAVBAR MOBILE CONTROLS
+  // 5. NAVBAR MOBILE CONTROLS
   // ==========================================
   const navOpenBtn = document.querySelector("[data-nav-open-btn]");
   const navCloseBtn = document.querySelector("[data-nav-close-btn]");
