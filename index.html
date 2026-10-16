@@ -7,95 +7,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parrots Travel and Tours</title>
 
-  <!--favicon-->
+  <!-- Favicon -->
   <link rel="shortcut icon" href="./assets/images/new logo.png" type="image/svg+xml">
 
-  <!--custom css link-->
-  <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!--google font link-->
+  <!-- Google Fonts Link (Poppins, Montserrat, Noto Sans JP) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet">
+
+  <!-- Consolidated CSS File -->
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body id="top">
 
-<header class="header" data-header>
-  <div class="overlay" data-overlay></div>
+   <!-- ==============================================
+       HEADER NAVIGATION BAR
+       ============================================== -->
+  <header class="parrots-header" id="main-header">
+    <div class="parrots-container">
 
-  <div class="header-top">
-    <div class="container">
-
-      <ul class="contact-list"></ul>
-
-      <div class="header-brand-name">
-        <h1 class="brand-title">Parrots Travel and Tours</h1>
-      </div>
-
-      <ul class="social-list desktop-social">
-        <li>
-          <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank" class="social-link">
-            <ion-icon name="logo-facebook"></ion-icon>
-          </a>
-        </li>
-      </ul>
-
-    </div>
-  </div>
-
-  <div class="header-bottom">
-    <div class="container">
-
-      <a href="#" class="logo">
-        <img src="./assets/images/new logo.png" alt="Parrots Travel Logo">
+      <!-- LEFT: BRAND LOGO -->
+      <a href="index.html" class="parrots-brand">
+        <div class="parrots-logo-badge">
+          <img src="./assets/images/new logo.png" alt="Parrots Travel Logo">
+        </div>
+        <div class="parrots-brand-text">
+          <span class="parrots-brand-title">PARROTS TRAVEL & TOURS</span>
+        </div>
       </a>
 
-      <nav class="navbar" data-navbar>
-        <div class="navbar-top">
-          <a href="#" class="logo">
-            <img src="./assets/images/logo2.png" alt="Parrots Travel Logo">
-          </a>
-          <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
-            <ion-icon name="close-outline"></ion-icon>
-          </button>
-        </div>
+      <!-- CENTER: NAVIGATION LINKS (ACTIVE: SEASONAL GUIDES) -->
+      <nav class="parrots-nav" id="main-nav">
+          <div class="parrots-drawer-top">
+    <a href="index.html" class="parrots-drawer-logo" aria-label="Go to home page">
+      <img src="./assets/images/new logo.png" alt="Parrots Travel Logo">
+    </a>
+    <button class="parrots-nav-close" id="nav-close" aria-label="Close menu">&times;</button>
+  </div>
 
-        <ul class="navbar-list">
-          <li><a href="#popular" class="navbar-link" data-nav-link>packages</a></li>
-          <li><a href="#contact" class="navbar-link" data-nav-link>contact us</a></li>
+        <ul class="parrots-nav-list">
+          <li class="parrots-nav-item">
+            <a href="packages.html" class="parrots-nav-link">
+              <span class="en-label" data-i18n="nav_packages">Tour Packages</span>
+              <span class="jp-label"></span>
+            </a>
+          </li>
+          <li class="parrots-nav-item">
+            <a href="guides.html" class="parrots-nav-link">
+              <span class="en-label" data-i18n="nav_guides">Seasonal Guides</span>
+              <span class="jp-label"></span>
+            </a>
+          </li>
+          <li class="parrots-nav-item">
+  <a href="promotional.html" class="parrots-nav-link">
+    <span class="en-label" data-i18n="nav_promos">Promotions & Media</span>
+    <span class="jp-label"></span>
+  </a>
+</li>
+          <li class="parrots-nav-item">
+            <a href="index.html#about-showcase" class="parrots-nav-link">
+              <span class="en-label" data-i18n="nav_about">About Us</span>
+              <span class="jp-label"></span>
+            </a>
+          </li>
         </ul>
       </nav>
 
-      <div class="header-btn-group">
-        
-        <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank" class="mobile-social-link">
-          <ion-icon name="logo-facebook"></ion-icon>
+   
+        <a href="https://www.facebook.com/parrotstravelandtours/" target="_blank" class="parrots-btn-inquire">
+          <span data-i18n="nav_inquire">INQUIRE</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
         </a>
 
-        <a href="https://m.me/ParrotsTravelTours" target="_blank" class="btn btn-primary">MESSAGE US</a>
-        
-        <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
-          <ion-icon name="menu-outline"></ion-icon>
+        <button class="parrots-burger" id="nav-open" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
+  </header>
 
-    </div>
-  </div>
-</header>
+  <!-- Mobile Drawer Backdrop -->
+  <div class="parrots-backdrop" id="nav-backdrop"></div>
 
   <main>
     <article>
 
-      <!--#HERO-->
-
+      <!-- ==============================================
+           HERO SECTION
+           ============================================== -->
       <section class="hero" id="home">
         <div class="container">
-
           <h2 class="h1 hero-title">Discover the Timeless Magic of Japan</h2>
-
           <p class="hero-text">
             From the soothing hot springs of Lake Toya and Noboribetsu to the alpine peaks of Niseko and the historic charms of Otaru Canal. 
             Journey through the rolling flower fields of Furano and the vibrant streets of Sapporo on an exclusive, private VIP charter across Hokkaido.
@@ -103,789 +111,201 @@
         </div>
       </section>
 
-<section class="popular" id="popular">
-  <div class="container">
+      <!-- ==============================================
+           PARROTS ITINERARY & PROFILE SHOWCASE (SLIDER P1-P9)
+           ============================================== -->
+      <section class="pvk-deck-wrapper" id="about-showcase">
 
-  <ul class="popular-list">
-    
+        <!-- Header -->
+        <div class="pvk-deck-heading">
+          <span class="pvk-deck-tag">PARROTS TRAVEL & TOURS</span>
+          <h2 class="pvk-deck-title">HOKKAIDO VIP CAR TRAVEL TOUR</h2>
+          <p class="pvk-deck-sub">Your Journey. Our Service, Your Comfort.</p>
+        </div>
 
- <!-- ==============================================
-           TEMPORARILY HIDDEN TOURS (OSAKA, TOKYO, GRAND)
-      ============================================== -->
-      <!--
-      <li>
-        <div class="popular-card">
-          <figure class="card-img">
-            <img src="./assets/images/osaka.jpg" alt="Osaka Package">
-            <div class="card-badge">4D / 3N</div>
-          </figure>
-          <div class="card-content">
-            <div class="card-rating">
-              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-            </div>
-            <p class="card-subtitle"><a href="#">Japan</a></p>
-            <h3 class="h3 card-title"><a href="#">Osaka Package</a></h3>
-            <p class="card-text">Experience the vibrant streets of Osaka and enjoy unforgettable tours.</p>
-            <ul class="card-meta-list">
-              <li class="card-meta-item"><div class="meta-box"><ion-icon name="people-outline"></ion-icon><p class="text">Min. 4 Pax</p></div></li>
-              <li class="card-meta-item"><div class="meta-box"><ion-icon name="airplane-outline"></ion-icon><p class="text">Airfare</p></div></li>
-            </ul>
+        <!-- Meta Info Bar (Company & Tour Specs) -->
+        <div class="pvk-spec-strip">
+          <div class="pvk-spec-col">
+            <div class="pvk-spec-lbl">Headquarters</div>
+            <div class="pvk-spec-val">Pangasinan, PH</div>
           </div>
-          <div class="card-price">
-            <p class="price">₱47,999</p>
-            <button class="btn btn-secondary btn-view-details" data-target="modal-osaka">View Details</button>
-            <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank">
-              <button class="btn btn-primary" style="margin-top:10px; width:100%;">Book Now</button>
-            </a>
+          <div class="pvk-spec-col">
+            <div class="pvk-spec-lbl">Tour Type</div>
+            <div class="pvk-spec-val">VIP Private Charter</div>
+          </div>
+          <div class="pvk-spec-col">
+            <div class="pvk-spec-lbl">Destinations</div>
+            <div class="pvk-spec-val">Sapporo, Otaru, Niseko+</div>
+          </div>
+          <div class="pvk-spec-col">
+            <div class="pvk-spec-lbl">Charter Rate</div>
+            <div class="pvk-spec-val pvk-accent-red">¥100,000 <small>/ day</small></div>
           </div>
         </div>
-      </li>
 
-      <li>
-        <div class="popular-card">
-          <figure class="card-img">
-            <img src="./assets/images/tokyo.jpg" alt="Tokyo Package">
-            <div class="card-badge">5D / 4N</div>
-          </figure>
-          <div class="card-content">
-            <div class="card-rating">
-              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-            </div>
-            <p class="card-subtitle"><a href="#">Japan</a></p>
-            <h3 class="h3 card-title"><a href="#">Tokyo Package</a></h3>
-            <p class="card-text">Explore Tokyo's modern city life, anime districts, and food culture.</p>
-            <ul class="card-meta-list">
-              <li class="card-meta-item"><div class="meta-box"><ion-icon name="people-outline"></ion-icon><p class="text">Min. 4 Pax</p></div></li>
-              <li class="card-meta-item"><div class="meta-box"><ion-icon name="airplane-outline"></ion-icon><p class="text">Airfare</p></div></li>
-            </ul>
-          </div>
-          <div class="card-price">
-            <p class="price">₱55,999</p>
-            <button class="btn btn-secondary btn-view-details" data-target="modal-tokyo">View Details</button>
-            <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank">
-              <button class="btn btn-primary" style="margin-top:10px; width:100%;">Book Now</button>
-            </a>
-          </div>
-        </div>
-      </li>
-
-      <li>
-        <div class="popular-card">
-          <figure class="card-img">
-            <img src="./assets/images/grand-tour.jpg" alt="Tokyo & Osaka">
-            <div class="card-badge">7D / 6N</div>
-          </figure>
-          <div class="card-content">
-            <div class="card-rating">
-              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-            </div>
-            <p class="card-subtitle"><a href="#">Japan</a></p>
-            <h3 class="h3 card-title"><a href="#">Grand Tour</a></h3>
-            <p class="card-text">The ultimate Japan experience: Kyoto, Mt. Fuji, and Osaka City tours.</p>
-            <ul class="card-meta-list">
-              <li class="card-meta-item"><div class="meta-box"><ion-icon name="train-outline"></ion-icon><p class="text">Bullet Train</p></div></li>
-              <li class="card-meta-item"><div class="meta-box"><ion-icon name="document-text-outline"></ion-icon><p class="text">Visa Asst.</p></div></li>
-            </ul>
-          </div>
-          <div class="card-price">
-            <p class="price">₱89,999</p>
-            <button class="btn btn-secondary btn-view-details" data-target="modal-grand">View Details</button>
-            <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank">
-              <button class="btn btn-primary" style="margin-top:10px; width:100%;">Book Now</button>
-            </a>
-          </div>
-        </div>
-      </li>
-      -->
-      <!-- ============================================== -->
-
-     <ul class="popular-list">
-
-      <!-- LEFT: PROMOTIONAL VIDEO -->
-      <li>
-        <div class="popular-card" style="padding: 0; background: #000; overflow: hidden; height: 100%;">
-          <video controls poster="./assets/images/Screenshot 2026-08-30 214254.png" playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
-            <source src="./assets/videos/hokkaidoo.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-          </video>
-        </div>
-      </li>
-
-      <!-- RIGHT: VIP HOKKAIDO CARD -->
-      <li>
-        <div class="popular-card">
-          <figure class="card-img">
-            <img src="./assets/images/hokkaido-japan.jpg" alt="VIP Hokkaido Tour">
-            <div class="card-badge">6D / 5N</div>
-          </figure>
-
-          <div class="card-content">
-            <div class="card-rating">
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-            </div>
-            
-            <p class="card-subtitle"><a href="#">Hokkaido, Japan</a></p>
-            <h3 class="h3 card-title"><a href="#">VIP Private Tour</a></h3>
-            <p class="card-text">Exclusive private charter: Lake Toya, Niseko, Otaru, Sapporo & Furano.</p>
-            
-            <ul class="card-meta-list">
-              <li class="card-meta-item">
-                <div class="meta-box">
-                  <ion-icon name="time-outline"></ion-icon>
-                  <p class="text">10h Service / Day</p>
-                </div>
-              </li>
-              <li class="card-meta-item">
-                <div class="meta-box">
-                  <ion-icon name="people-outline"></ion-icon>
-                  <p class="text">1–5 Pax</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="card-price">
-            <p class="price">¥100,000 <span>/ day</span></p>
-            <p style="font-size: 12px; color: #777; margin-bottom: 12px; line-height: 1.3;">
-              Up to 10 hours of private travel daily
-            </p>
-            <button class="btn btn-secondary btn-view-details" data-target="modal-vip-hokkaido">View Details</button>
-            <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank">
-              <button class="btn btn-primary" style="margin-top: 10px; width: 100%;">Book Now</button>
-            </a>
-          </div>
-        </div>
-      </li>
-
-    </ul>
-  </div>
-</section>
-
-<!-- TOKYO MODAL -->
-<div class="modal-overlay" id="modal-tokyo">
-  <div class="modal-content">
-    <button class="close-modal">&times;</button>
-    
-    <h2 class="h2">Tokyo Package Details</h2>
-    
-    <!-- Quick Info Bar -->
-    <div class="modal-info-banner">
-      <div class="info-item">
-        <ion-icon name="time-outline"></ion-icon>
-        <span>4D / 3N</span>
-      </div>
-      <div class="info-item">
-        <ion-icon name="people-outline"></ion-icon>
-        <span>Min. 4 Pax</span>
-      </div>
-      <div class="info-item price-highlight">
-        <span>₱49,999</span>
-      </div>
-    </div>
-
-    <div class="modal-body">
-      <div class="modal-gallery">
-        <img src="./assets/images/tokyo-city.jpg" alt="Tokyo City">
-        <img src="./assets/images/fuji.jpg" alt="Mt. Fuji">
-      </div>
-
-      <div class="modal-details">
-        <h3>Package Inclusions:</h3>
-        <ul class="inclusion-list">
-          <li><ion-icon name="airplane-outline"></ion-icon> Round-trip Airfare</li>
-          <li><ion-icon name="bus-outline"></ion-icon> Round-trip Airport Transfers</li>
-          <li><ion-icon name="bed-outline"></ion-icon> Hotel Accommodation</li>
-          <li><ion-icon name="map-outline"></ion-icon> Tokyo City Tour & Mt. Fuji Tour</li>
-          <li><ion-icon name="document-text-outline"></ion-icon> Free Visa Assistance</li>
-        </ul>
-      </div>
-    </div>
-
-    <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank" class="btn btn-primary modal-btn">Book Tokyo Package</a>
-  </div>
-</div>
-
-<!-- GRAND TOUR MODAL -->
-<div class="modal-overlay" id="modal-grand">
-  <div class="modal-content">
-    <button class="close-modal">&times;</button>
-    
-    <h2 class="h2">Tokyo & Osaka Grand Tour Details</h2>
-    
-    <!-- Quick Info Banner -->
-    <div class="modal-info-banner">
-      <div class="info-item">
-        <ion-icon name="time-outline"></ion-icon>
-        <span>7D / 6N</span>
-      </div>
-      <div class="info-item">
-        <ion-icon name="people-outline"></ion-icon>
-        <span>Min. 4 Pax</span>
-      </div>
-      <div class="info-item price-highlight">
-        <span>₱89,999</span>
-      </div>
-    </div>
-
-    <div class="modal-body">
-      <div class="modal-gallery">
-        <img src="./assets/images/fuji.jpg" alt="Mt. Fuji">
-        <img src="./assets/images/bullet-train.jpg" alt="Shinkansen Bullet Train">
-      </div>
-
-      <div class="modal-details">
-        <h3>Package Inclusions:</h3>
-        <ul class="inclusion-list">
-          <li><ion-icon name="airplane-outline"></ion-icon> Round-trip Airfare</li>
-          <li><ion-icon name="bus-outline"></ion-icon> Round-trip Airport Transfers</li>
-          <li><ion-icon name="bed-outline"></ion-icon> Hotel Accommodation (Tokyo & Osaka)</li>
-          <li><ion-icon name="speedometer-outline"></ion-icon> <strong>Bullet Train (Shinkansen) Tickets</strong></li>
-          <li><ion-icon name="map-outline"></ion-icon> Tokyo, Mt. Fuji, Osaka & Kyoto-Nara Tours</li>
-          <li><ion-icon name="document-text-outline"></ion-icon> Free Visa Assistance</li>
-        </ul>
-      </div>
-    </div>
-
-    <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank" class="btn btn-primary modal-btn">Book This Grand Tour</a>
-  </div>
-</div>
-<!-- VIP HOKKAIDO PRIVATE TOUR MODAL -->
-<div class="modal-overlay" id="modal-vip-hokkaido">
-  <div class="modal-content">
-    <button class="close-modal">&times;</button>
-    
-    <h2 class="h2">Hokkaido VIP Private Tour Details</h2>
-    
-    <!-- Quick Info Banner -->
-    <div class="modal-info-banner">
-      <div class="info-item">
-        <ion-icon name="time-outline"></ion-icon>
-        <span>6D / 5N</span>
-      </div>
-      <div class="info-item">
-        <ion-icon name="people-outline"></ion-icon>
-        <span>1–5 Pax</span>
-      </div>
-      <div class="info-item">
-        <ion-icon name="car-outline"></ion-icon>
-        <span>10h Service/Day</span>
-      </div>
-      <div class="info-item price-highlight">
-        <span>¥100,000</span>
-        <span style="font-size: 11px; font-weight: normal; color: #666;">/ night</span>
-      </div>
-    </div>
-
-    <div class="modal-body">
-      
-      <!-- ============================================== -->
-      <!-- SLIDE VIEWER SECTION WITH FULLSCREEN BUTTON    -->
-      <!-- ============================================== -->
-      <div class="slide-viewer-wrapper">
-        <div class="slide-main-stage">
-          <button type="button" class="slide-arrow prev-slide" aria-label="Previous Slide">
-            <ion-icon name="chevron-back-outline"></ion-icon>
-          </button>
+        <!-- Slideshow Showcase Box -->
+        <div class="pvk-theater-box">
           
-          <img id="hokkaido-active-slide" src="./assets/images/hokkaido-slide-1.jpg" alt="Day 1 Itinerary Slide">
-          
-          <!-- Fullscreen Expand Button -->
-          <button type="button" class="slide-fullscreen-btn" id="open-slide-fullscreen" title="View Fullscreen">
-            <ion-icon name="scan-outline"></ion-icon>
-          </button>
+          <!-- Top Bar Controls -->
+          <div class="pvk-theater-bar">
+            <div class="pvk-counter-pill">
+              Page <span id="pvk-curr-page">1</span> / 9
+            </div>
+            <a href="./assets/Parrots Travel And Tours - Company Profile.pdf" target="_blank" download class="pvk-doc-link">
+              📄 Download Profile PDF
+            </a>
+          </div>
 
-          <button type="button" class="slide-arrow next-slide" aria-label="Next Slide">
-            <ion-icon name="chevron-forward-outline"></ion-icon>
-          </button>
-          <div class="slide-counter"><span id="current-slide-num">1</span> / 9</div>
-        </div>
+          <!-- Main Image Stage -->
+          <div class="pvk-screen-frame">
+            <button type="button" class="pvk-arrow-btn pvk-arrow-left" id="pvk-btn-prev" aria-label="Previous">‹</button>
+            
+            <img 
+              id="pvk-main-display" 
+              src="./assets/images/P1.jpg" 
+              alt="Parrots Travel and Tours Profile Cover" 
+            />
 
-        <!-- Thumbnail Strip -->
-        <div class="slide-thumbnails">
-          <img src="./assets/images/hokkaido-slide-1.jpg" class="thumb active" data-index="1" alt="Slide 1">
-          <img src="./assets/images/hokkaido-slide-2.jpg" class="thumb" data-index="2" alt="Slide 2">
-          <img src="./assets/images/hokkaido-slide-3.jpg" class="thumb" data-index="3" alt="Slide 3">
-          <img src="./assets/images/hokkaido-slide-4.jpg" class="thumb" data-index="4" alt="Slide 4">
-          <img src="./assets/images/hokkaido-slide-5.jpg" class="thumb" data-index="5" alt="Slide 5">
-          <img src="./assets/images/hokkaido-slide-6.jpg" class="thumb" data-index="6" alt="Slide 6">
-          <img src="./assets/images/hokkaido-slide-7.jpg" class="thumb" data-index="7" alt="Slide 7">
-          <img src="./assets/images/hokkaido-slide-8.jpg" class="thumb" data-index="8" alt="Slide 8">
-          <img src="./assets/images/hokkaido-slide-9.jpg" class="thumb" data-index="9" alt="Slide 9">
-        </div>
-      </div>
-      <!-- ============================================== -->
+            <button type="button" class="pvk-arrow-btn pvk-arrow-right" id="pvk-btn-next" aria-label="Next">›</button>
+          </div>
 
-      <!-- Inclusions -->
-      <div class="modal-details" style="margin-top: 25px;">
-        <h3>Package Inclusions:</h3>
-        <ul class="inclusion-list">
-          <li><ion-icon name="car-sport-outline"></ion-icon> Private vehicle with flexible stops (Up to 10 hours/day)</li>
-          <li><ion-icon name="chatbubbles-outline"></ion-icon> English or Chinese-speaking driver</li>
-          <li><ion-icon name="bed-outline"></ion-icon> Hotel Pick-up & Drop-off (Lake Toya, Niseko, Sapporo)</li>
-          <li><ion-icon name="checkmark-circle-outline"></ion-icon> Fuel, highway tolls, and parking fees included</li>
-          <li><ion-icon name="close-circle-outline" style="color: #888;"></ion-icon> <span style="color: #777;">Not Included: Admission tickets, meals & beverages</span></li>
-        </ul>
-      </div>
-
-      <!-- Day-by-Day Itinerary Summary -->
-      <div class="modal-details" style="margin-top: 20px;">
-        <h3>Tour Route Summary:</h3>
-        <ul class="inclusion-list">
-          <li><ion-icon name="location-outline"></ion-icon> <strong>Day 1:</strong> New Chitose Airport &rarr; Lake Toya & Onsen</li>
-          <li><ion-icon name="location-outline"></ion-icon> <strong>Day 2:</strong> Lake Toya &harr; Noboribetsu (Hell Valley, Edo Village)</li>
-          <li><ion-icon name="location-outline"></ion-icon> <strong>Day 3:</strong> Lake Toya &rarr; Niseko Mountain Resort & Takahashi Dairy Farm</li>
-          <li><ion-icon name="location-outline"></ion-icon> <strong>Day 4:</strong> Niseko/Toya &rarr; Otaru Canal &rarr; Sapporo (Susukino)</li>
-          <li><ion-icon name="location-outline"></ion-icon> <strong>Day 5:</strong> Furano & Biei Day Trip (Seasonal Flowers / Winter Snow)</li>
-          <li><ion-icon name="location-outline"></ion-icon> <strong>Day 6:</strong> Sapporo Shopping & Departure to New Chitose Airport</li>
-        </ul>
-      </div>
-
-      <!-- 3 Video Previews Grid
-      <div class="modal-details" style="margin-top: 25px;">
-        <h3>Video Highlights:</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 10px;">
-          <video controls style="width: 100%; height: 120px; border-radius: 8px; object-fit: cover; background: #000;">
-            <source src="./assets/videos/video1.mp4" type="video/mp4">
-          </video>
-          <video controls style="width: 100%; height: 120px; border-radius: 8px; object-fit: cover; background: #000;">
-            <source src="./assets/videos/video2.mp4" type="video/mp4">
-          </video>
-          <video controls style="width: 100%; height: 120px; border-radius: 8px; object-fit: cover; background: #000;">
-            <source src="./assets/videos/video3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div> -->
-
-      <!-- Modal Action Button -->
-      <div style="margin-top: 30px;">
-        <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank" class="modal-btn" style="display: block; text-decoration: none;">
-          Book Hokkaido VIP Charter
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- FULLSCREEN LIGHTBOX POPUP -->
-  <div id="slide-lightbox" class="slide-lightbox-overlay" style="display: none;">
-    <button class="close-lightbox" id="close-slide-fullscreen" aria-label="Close Fullscreen">&times;</button>
-    <div class="lightbox-content-box">
-      <button type="button" class="lightbox-arrow prev-lb" aria-label="Previous Slide">
-        <ion-icon name="chevron-back-outline"></ion-icon>
-      </button>
-      <img id="lightbox-img" src="./assets/images/hokkaido-slide-1.jpg" alt="Fullscreen Slide">
-      <button type="button" class="lightbox-arrow next-lb" aria-label="Next Slide">
-        <ion-icon name="chevron-forward-outline"></ion-icon>
-      </button>
-    </div>
-    <div class="lightbox-counter"><span id="lb-current-num">1</span> / 9</div>
-  </div>
-</div>
-
-<!-- ================= PARROTS ITINERARY & PROFILE SHOWCASE ================= -->
-<section class="pvk-deck-wrapper">
-
-  <!-- Header -->
-  <div class="pvk-deck-heading">
-    <span class="pvk-deck-tag">PARROTS TRAVEL & TOURS</span>
-    <h2 class="pvk-deck-title">HOKKAIDO VIP CAR TRAVEL TOUR</h2>
-    <p class="pvk-deck-sub">Your Journey. Our Service, Your Comfort.</p>
-  </div>
-
-  <!-- Meta Info Bar (Company & Tour Specs) -->
-  <div class="pvk-spec-strip">
-    <div class="pvk-spec-col">
-      <div class="pvk-spec-lbl">Headquarters</div>
-      <div class="pvk-spec-val">Pangasinan, PH</div>
-    </div>
-    <div class="pvk-spec-col">
-      <div class="pvk-spec-lbl">Tour Type</div>
-      <div class="pvk-spec-val">VIP Private Charter</div>
-    </div>
-    <div class="pvk-spec-col">
-      <div class="pvk-spec-lbl">Destinations</div>
-      <div class="pvk-spec-val">Sapporo, Otaru, Niseko+</div>
-    </div>
-    <div class="pvk-spec-col">
-      <div class="pvk-spec-lbl">Charter Rate</div>
-      <div class="pvk-spec-val pvk-accent-red">¥100,000 <small>/ day</small></div>
-    </div>
-  </div>
-
-  <!-- Slideshow Showcase Box -->
-  <div class="pvk-theater-box">
-    
-    <!-- Top Bar Controls -->
-    <div class="pvk-theater-bar">
-      <div class="pvk-counter-pill">
-        Page <span id="pvk-curr-page">1</span> / 9
-      </div>
-      <a href="./assets/Parrots Travel And Tours - Company Profile.pdf" target="_blank" download class="pvk-doc-link">
-        📄 Download Profile PDF
-      </a>
-    </div>
-
-    <!-- Main Image Stage -->
-    <div class="pvk-screen-frame">
-      <button type="button" class="pvk-arrow-btn pvk-arrow-left" id="pvk-btn-prev" aria-label="Previous">‹</button>
-      
-      <img 
-        id="pvk-main-display" 
-        src="./assets/images/P1.jpg" 
-        alt="Parrots Travel and Tours Profile Cover" 
-      />
-
-      <button type="button" class="pvk-arrow-btn pvk-arrow-right" id="pvk-btn-next" aria-label="Next">›</button>
-    </div>
-
-    <!-- Thumbnail Bar (P1 to P9) -->
-    <div class="pvk-thumbs-shelf">
-      <img src="./assets/images/P1.jpg" class="pvk-thumb-item pvk-is-active" data-idx="1" alt="Cover Page">
-      <img src="./assets/images/P2.jpg" class="pvk-thumb-item" data-idx="2" alt="About Us">
-      <img src="./assets/images/P3.jpg" class="pvk-thumb-item" data-idx="3" alt="Tour Highlights">
-      <img src="./assets/images/P4.jpg" class="pvk-thumb-item" data-idx="4" alt="Our Services">
-      <img src="./assets/images/P5.jpg" class="pvk-thumb-item" data-idx="5" alt="Explore Hokkaido">
-      <img src="./assets/images/P6.jpg" class="pvk-thumb-item" data-idx="6" alt="Who It's For">
-      <img src="./assets/images/P7.jpg" class="pvk-thumb-item" data-idx="7" alt="Why Choose Us">
-      <img src="./assets/images/P8.jpg" class="pvk-thumb-item" data-idx="8" alt="Vision & Mission">
-      <img src="./assets/images/P9.jpg" class="pvk-thumb-item" data-idx="9" alt="Our Promise">
-    </div>
-  </div>
-
-  <!-- Key Highlights & Inclusions (Directly from Profile) -->
-  <div class="pvk-perks-box">
-    <div class="pvk-perks-grid-wrapper">
-      <div class="pvk-perk-column">
-        <h3 class="pvk-perks-title">What We Offer:</h3>
-        <ul class="pvk-perks-list">
-          <li>🚗 Private car transportation & city-to-city transfers</li>
-          <li>✈️ Airport pick-up & drop-off (New Chitose Airport)</li>
-          <li>📍 Customized itineraries tailored to your schedule & interests</li>
-          <li>❄️ Seasonal sightseeing, winter adventures & scenic routes</li>
-        </ul>
-      </div>
-
-      <div class="pvk-perk-column">
-        <h3 class="pvk-perks-title">Ideal For:</h3>
-        <ul class="pvk-perks-list">
-          <li>🇵🇭 Filipino travelers visiting Japan</li>
-          <li>👨‍👩‍👧‍👦 Families & multi-generational groups traveling together</li>
-          <li>🏔️ First-time visitors seeking stress-free point-to-point travel</li>
-          <li>✨ Couples & private groups wanting maximum flexibility</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-</section>
-<!-- ================= END SECTION ================= -->
-
-<section class="flower-guide-section">
-  <div class="container">
-
-    <div class="section-title-wrapper">
-      <h3 class="section-subtitle">Hokkaido Flower Guide</h3>
-      <h2 class="section-title">May Travel Face-Off: Mishima vs. Furano</h2>
-      <p class="section-text">Planning a spring getaway? Here is exactly how Hokkaido's premier flower destinations look right now.</p>
-    </div>
-
-    <div class="guide-grid">
-
-      <div class="guide-card active-season">
-        <div class="card-status-badge status-now">Now In Season</div>
-        
-        <div class="guide-card-header">
-          <ion-icon name="color-palette-outline"></ion-icon>
-          <div>
-            <h3 class="card-location">Kutchan, Hokkaido</h3>
-            <h2 class="card-title">Mishima's Shibazakura Garden</h2>
+          <!-- Thumbnail Bar (P1 to P9) -->
+          <div class="pvk-thumbs-shelf">
+            <img src="./assets/images/P1.jpg" class="pvk-thumb-item pvk-is-active" data-idx="1" alt="Cover Page">
+            <img src="./assets/images/P2.jpg" class="pvk-thumb-item" data-idx="2" alt="About Us">
+            <img src="./assets/images/P3.jpg" class="pvk-thumb-item" data-idx="3" alt="Tour Highlights">
+            <img src="./assets/images/P4.jpg" class="pvk-thumb-item" data-idx="4" alt="Our Services">
+            <img src="./assets/images/P5.jpg" class="pvk-thumb-item" data-idx="5" alt="Explore Hokkaido">
+            <img src="./assets/images/P6.jpg" class="pvk-thumb-item" data-idx="6" alt="Who It's For">
+            <img src="./assets/images/P7.jpg" class="pvk-thumb-item" data-idx="7" alt="Why Choose Us">
+            <img src="./assets/images/P8.jpg" class="pvk-thumb-item" data-idx="8" alt="Vision & Mission">
+            <img src="./assets/images/P9.jpg" class="pvk-thumb-item" data-idx="9" alt="Our Promise">
           </div>
         </div>
 
-        <figure class="card-banner">
-          <img src="./assets/images/mishima.jpg" alt="Mishima Shibazakura Garden with Mt. Yotei">
-        </figure>
+        <!-- Key Highlights & Inclusions -->
+        <div class="pvk-perks-box">
+          <div class="pvk-perks-grid-wrapper">
+            <div class="pvk-perk-column">
+              <h3 class="pvk-perks-title">What We Offer:</h3>
+              <ul class="pvk-perks-list">
+                <li>🚗 Private car transportation & city-to-city transfers</li>
+                <li>✈️ Airport pick-up & drop-off (New Chitose Airport)</li>
+                <li>📍 Customized itineraries tailored to your schedule & interests</li>
+                <li>❄️ Seasonal sightseeing, winter adventures & scenic routes</li>
+              </ul>
+            </div>
 
-        <div class="banner-box focus-banner">
-          <div class="banner-item">
-            <ion-icon name="star-outline"></ion-icon>
-            <span><strong>Peak Period:</strong> Late May - Early June</span>
-          </div>
-          <div class="banner-item target-dates">
-            <ion-icon name="calendar-outline"></ion-icon>
-            <span><strong>Sweet Spot:</strong> May 22 – June 5</span>
-          </div>
-        </div>
-
-        <p class="card-intro">
-          This is the absolute best destination for a spring floral trip. Traveling right now provides a spectacular seasonal landscape contrast:
-        </p>
-
-        <ul class="highlight-list">
-          <li><ion-icon name="checkmark-circle-outline"></ion-icon> Stunning pink shibazakura (moss phlox) carpets</li>
-          <li><ion-icon name="checkmark-circle-outline"></ion-icon> Fields of bright yellow canola flowers nearby</li>
-          <li><ion-icon name="checkmark-circle-outline"></ion-icon> Clear views of snow-capped Mt. Yotei in the back</li>
-        </ul>
-
-        <div class="tips-box">
-          <h4><ion-icon name="information-circle-outline"></ion-icon> Practical Tips:</h4>
-          <ul>
-            <li><strong>Entry:</strong> Completely Free (Private property graciously open to the public).</li>
-            <li><strong>Parking:</strong> No direct parking. Visitors utilize temporary off-site public lots.</li>
-            <li><strong>Pro-Tip:</strong> Arrive between <strong>7:00 AM – 9:00 AM</strong> for crystal-clear, cloudless mountain photos.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="guide-card upcoming-season">
-        <div class="card-status-badge status-soon">Coming Soon</div>
-
-        <div class="guide-card-header">
-          <ion-icon name="time-outline"></ion-icon>
-          <div>
-            <h3 class="card-location">Furano, Hokkaido</h3>
-            <h2 class="card-title">Furano Lavender Gardens</h2>
+            <div class="pvk-perk-column">
+              <h3 class="pvk-perks-title">Ideal For:</h3>
+              <ul class="pvk-perks-list">
+                <li>🇵🇭 Filipino travelers visiting Japan</li>
+                <li>👨‍👩‍👧‍👦 Families & multi-generational groups traveling together</li>
+                <li>🏔️ First-time visitors seeking stress-free point-to-point travel</li>
+                <li>✨ Couples & private groups wanting maximum flexibility</li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <figure class="card-banner">
-          <img src="./assets/images/furanos.jpg" alt="Furano Lavender Fields">
-        </figure>
+      </section>
 
-        <div class="banner-box alert-banner">
-          <div class="banner-item">
-            <ion-icon name="alert-circle-outline"></ion-icon>
-            <span><strong>May Status:</strong> Too early for iconic lavender fields</span>
-          </div>
-        </div>
-
-        <p class="card-intro">
-          While you will encounter fresh green scenery and early spring flora right now, the postcard-perfect fields require waiting a bit longer:
-        </p>
-
-        <div class="mini-timeline">
-          <div class="timeline-step">
-            <span class="step-time">Late June - Early July</span>
-            <p>Quieter crowds with early lavender blooms beginning to break alongside rows of poppies.</p>
-          </div>
-          <div class="timeline-step peak-step">
-            <span class="step-time">Mid to Late July (Peak Bloom)</span>
-            <p>The iconic window. Famous purple lavender carpets at Farm Tomita and rainbow lines are fully dynamic.</p>
-          </div>
-        </div>
-
-        <div class="recommendation-badge">
-          <ion-icon name="airplane-outline"></ion-icon>
-          <div>
-            <h5>Ideal Window for Your Travel Group:</h5>
-            <p>Target <strong>July 10 – 25</strong> for the perfect combination of peak floral vibrancy and optimal photo weather.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-      <!-- #GALLERY -->
-<section class="gallery" id="gallery">
-  <div class="container">
-
-    <p class="section-subtitle">Photo Gallery</p>    <h2 class="h2 section-title">Memories From Our Travelers</h2>
-    <p class="section-text">
-      Take a glimpse into the unforgettable experiences, breathtaking landscapes, and smiling faces from our recent tour groups across Japan.
-    </p>
-
- <ul class="gallery-list">
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/1.jpg" alt="Gallery image 1">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/2.jpg" alt="Gallery image 2">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/3.jpg" alt="Gallery image 3">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/4.jpg" alt="Gallery image 4">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/5.jpg" alt="Gallery image 5">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/6.jpg" alt="Gallery image 6">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/7.jpg" alt="Gallery image 7">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/8.jpg" alt="Gallery image 8">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/10.jpg" alt="Gallery image 10">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/13.jpg" alt="Gallery image 13">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/14.jpg" alt="Gallery image 14">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/15.JPG" alt="Gallery image 15">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/16.JPG" alt="Gallery image 16">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/17.JPG" alt="Gallery image 17">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/19.JPG" alt="Gallery image 19">
-    </figure>
-  </li>
-  <li class="gallery-item">
-    <figure class="gallery-image">
-      <img src="./assets/images/20.JPG" alt="Gallery image 20">
-    </figure>
-  </li>
-</ul>
-
-  </div>
-</section>
-
-
-
-
-      <!-- 
-        - #CTA
-      -->
-
-      <section class="cta" id="contact">
+      <!-- ==============================================
+           PHOTO GALLERY SECTION
+           ============================================== -->
+      <section class="gallery" id="gallery">
         <div class="container">
+          <p class="section-subtitle">Photo Gallery</p>
+          <h2 class="h2 section-title">Memories From Our Travelers</h2>
+          <p class="section-text">
+            Take a glimpse into the unforgettable experiences, breathtaking landscapes, and smiling faces from our recent tour groups across Japan.
+          </p>
 
-          <div class="cta-content">
-        
-
-            <h2 class="h2 section-title">READY FOR AN UNFORGETTABLE JOURNEY?</h2>
-
-            <p class="section-text">
-              Your dream Japan adventure is just a click away. Connect with our travel experts to start planning your custom itinerary today
-            </p>
-          </div>
-
+          <ul class="gallery-list">
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/1.jpg" alt="Gallery image 1"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/2.jpg" alt="Gallery image 2"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/3.jpg" alt="Gallery image 3"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/4.jpg" alt="Gallery image 4"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/5.jpg" alt="Gallery image 5"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/6.jpg" alt="Gallery image 6"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/7.jpg" alt="Gallery image 7"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/8.jpg" alt="Gallery image 8"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/10.jpg" alt="Gallery image 10"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/13.jpg" alt="Gallery image 13"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/14.jpg" alt="Gallery image 14"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/15.JPG" alt="Gallery image 15"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/16.JPG" alt="Gallery image 16"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/17.JPG" alt="Gallery image 17"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/19.JPG" alt="Gallery image 19"></figure></li>
+            <li class="gallery-item"><figure class="gallery-image"><img src="./assets/images/20.JPG" alt="Gallery image 20"></figure></li>
+          </ul>
         </div>
       </section>
 
-    </article>
+ 
   </main>
 
+  <!-- ==============================================
+       FOOTER SECTION
+       ============================================== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
 
-
-
-
-  <!-- 
-    - #FOOTER
-  -->
-
-  
-<div class="footer-brand">
-  <!-- This wrapper is the key for the side-by-side layout -->
-<div class="footer-top">
-  <div class="container">
-
-    <!-- LEFT SIDE: LOGO & BRAND TEXT -->
-    <div class="footer-brand">
-      <div class="footer-brand-wrapper">
-        <a href="#" class="logo">
-          <img src="./assets/images/new logo.png" alt="Parrots Travel Logo">
-        </a>
-        <div class="brand-text-content">
-          <h3 class="brand-name">Parrots Travel & Tours</h3>
-          <p class="footer-text">
-            Discover the beauty of Japan with hassle-free, curated tour packages.
-          </p>
+        <!-- LEFT SIDE: LOGO & BRAND TEXT -->
+        <div class="footer-brand">
+          <div class="footer-brand-wrapper">
+            <a href="index.html" class="logo">
+              <img src="./assets/images/new logo.png" alt="Parrots Travel Logo">
+            </a>
+            <div class="brand-text-content">
+              <h3 class="brand-name">Parrots Travel & Tours</h3>
+              <p class="footer-text">
+                Discover the beauty of Japan with hassle-free, curated tour packages.
+              </p>
+            </div>
+          </div>
         </div>
+
+        <!-- RIGHT SIDE: CONTACT US -->
+        <div class="footer-contact">
+          <h4 class="contact-title">Contact Us</h4>
+          <ul class="contact-list">
+            <li>
+              <ion-icon name="call-outline"></ion-icon>
+              <a href="tel:+639338557720" class="contact-link">(0933) 855 7720</a>
+            </li>
+            <li>
+              <ion-icon name="call-outline"></ion-icon>
+              <a href="tel:+63756333182" class="contact-link">+(075) 633 3182</a>
+            </li>
+            <li>
+              <ion-icon name="mail-outline"></ion-icon>
+              <a href="mailto:info@parrotstravelandtours.com" class="contact-link">parrotstravelandtours.com</a>
+            </li>
+            <li>
+              <ion-icon name="location-outline"></ion-icon>
+              <address>Address # 36 Avenida Rizal West, Poblacion, Lingayen, Pangasinan</address>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </div>
+  </footer>
 
-    <!-- RIGHT SIDE: CONTACT US -->
-    <div class="footer-contact">
-      <h4 class="contact-title">Contact Us</h4>
-      
-      <ul class="contact-list">
-        <li>
-          <ion-icon name="call-outline"></ion-icon>
-          <a href="tel:+639123456789" class="contact-link">(0933) 855 7720</a>
-        </li>
-        <li>
-          <ion-icon name="call-outline"></ion-icon>
-          <a href="tel:+(075) 633 3182" class="contact-link">+(075) 633 3182</a>
-        </li>
-        <li>
-          <ion-icon name="mail-outline"></ion-icon>
-          <a href="mailto:info@yourdomain.com" class="contact-link">parrotstravelandtours.com</a>
-        </li>
-        <li>
-          <ion-icon name="location-outline"></ion-icon>
-          <address>Address # 36 Avenida Rizal West, Poblacion, Lingayen, Pangasinan</address>
-        </li>
-        
-      </ul>
-    </div>
-
-  </div>
-</div>
-
-
-
-  <!--#GO TO TOP-->
-
+  <!-- GO TO TOP BUTTON -->
   <a href="#top" class="go-top" data-go-top>
     <ion-icon name="chevron-up-outline"></ion-icon>
   </a>
-  
-  <!--icon link-->
+
+  <!-- Ionicons -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  </div>
-</div>
-<script src="script.js"></script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
 </body>
-
-
 
 </html>

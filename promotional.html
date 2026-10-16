@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Promotions & Media | Parrots Travel & Tours</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/new logo.png" type="image/svg+xml">
+
+  <!-- Typography Stack -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Consolidated Site CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <style>
+    /* =========================================================
+       PAGE SPECIFIC STYLES: PROMOTIONS & MEDIA
+       ========================================================= */
+    .promo-hero {
+      padding-top: 130px;
+      padding-bottom: 50px;
+      background: #ffffff;
+      border-bottom: 1px solid #edf2f7;
+      text-align: center;
+    }
+
+    .promo-section {
+      padding-block: 60px;
+      background: #f8fafc;
+      min-height: 80vh;
+    }
+
+    /* Filter Tabs */
+    .promo-filter-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748b;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+    }
+
+    /* Layout Split: 2-Column Cards + Facebook Live Widget */
+    .promo-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    /* Cards Grid */
+    .promo-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .promo-card {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .promo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+    }
+
+    .promo-media-box {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: #0f172a;
+      overflow: hidden;
+    }
+
+    .promo-media-box img,
+    .promo-media-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .promo-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: #ff2d55;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      z-index: 2;
+    }
+
+    .promo-badge.video-badge {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .promo-card-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .promo-date {
+      font-size: 11px;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .promo-card-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .promo-card-text {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .promo-fb-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #ff2d55;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: gap 0.2s ease;
+    }
+
+    .promo-fb-link:hover {
+      gap: 10px;
+    }
+
+    /* Facebook Page Plugin Sidebar */
+   .fb-sidebar-box {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 100px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+    .fb-sidebar-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .fb-sidebar-header ion-icon {
+      font-size: 24px;
+      color: #1877f2;
+    }
+
+    .fb-sidebar-header h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .promo-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .fb-sidebar-box {
+        position: static;
+        margin-top: 30px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .promo-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body id="top" class="inner-page bg-[#FCFCFC] text-neutral-800 font-sans antialiased"></body>
+  <!-- ==============================================
+       HEADER NAVIGATION BAR
+       ============================================== -->
+  <header class="parrots-header" id="main-header">
+    <div class="parrots-container">
+
+      <!-- LEFT: BRAND LOGO -->
+      <a href="index.html" class="parrots-brand">
+        <div class="parrots-logo-badge">
+          <img src="./assets/images/new logo.png" alt="Parrots Travel Logo">
+        </div>
+        <div class="parrots-brand-text">
+          <span class="parrots-brand-title">PARROTS TRAVEL & TOURS</span>
+        </div>
+      </a>
+
+      <!-- CENTER: NAVIGATION LINKS -->
+     <nav class="parrots-nav" id="main-nav">
+
+  <!-- Drawer top: logo + close button -->
+  <div class="parrots-drawer-top">
+    <a href="index.html" class="parrots-drawer-logo" aria-label="Go to home page">
+      <img src="./assets/images/new logo.png" alt="Parrots Travel Logo">
+    </a>
+    <button class="parrots-nav-close" id="nav-close" aria-label="Close menu">&times;</button>
+  </div>
+
+  <ul class="parrots-nav-list">
+        <ul class="parrots-nav-list">
+          <li class="parrots-nav-item">
+            <a href="packages.html" class="parrots-nav-link">
+              <span class="en-label" data-i18n="nav_packages">Tour Packages</span>
+              <span class="jp-label"></span>
+            </a>
+          </li>
+          <li class="parrots-nav-item">
+            <a href="guides.html" class="parrots-nav-link">
+              <span class="en-label" data-i18n="nav_guides">Seasonal Guides</span>
+              <span class="jp-label"></span>
+            </a>
+          </li>
+          <li class="parrots-nav-item">
+            <a href="promotional.html" class="parrots-nav-link active">
+              <span class="en-label" data-i18n="nav_promos">Promotions & Media</span>
+              <span class="jp-label"></span>
+            </a>
+          </li>
+          <li class="parrots-nav-item">
+            <a href="index.html#about-showcase" class="parrots-nav-link">
+              <span class="en-label" data-i18n="nav_about">About Us</span>
+              <span class="jp-label"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- RIGHT: ACTIONS -->
+     
+
+        <a href="https://www.facebook.com/parrotstravelandtours/" target="_blank" class="parrots-btn-inquire">
+          <span data-i18n="nav_inquire">INQUIRE</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <button class="parrots-burger" id="nav-open" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="parrots-backdrop" id="nav-backdrop"></div>
+
+  <main>
+    <!-- ==============================================
+         EDITORIAL HEADER BANNER
+         ============================================== -->
+    <section class="promo-hero">
+      <div class="container">
+        <p class="section-subtitle" data-i18n="promo_subtitle">Official Announcements & Videos</p>
+        <h1 class="h1 section-title" style="color: #0f172a;" data-i18n="promo_title">Promotions & Media</h1>
+        <p class="section-text" style="max-width: 680px; margin-inline: auto;" data-i18n="promo_desc">
+          Stay informed on our seasonal discount specials, charter promotions, and firsthand video highlights shared directly from our team in Japan and the Philippines.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         MAIN CONTENT: PROMOTIONAL CARDS & FACEBOOK FEED
+         ============================================== -->
+    <section class="promo-section">
+      <div class="container">
+
+        <!-- Category Filters -->
+        <div class="promo-filter-bar">
+          <button class="filter-btn active" onclick="filterMedia('all')">All Updates</button>
+          <button class="filter-btn" onclick="filterMedia('promo')">Promo Specials</button>
+          <button class="filter-btn" onclick="filterMedia('video')">Video Highlights</button>
+          <button class="filter-btn" onclick="filterMedia('tour')">Chauffeur Dispatches</button>
+        </div>
+
+        <div class="promo-layout">
+          
+          <!-- LEFT: 2-COLUMN MEDIA FEED -->
+          <div class="promo-cards-grid">
+
+            <!-- CARD 1: VIDEO POST -->
+            <article class="promo-card media-item" data-category="video">
+              <div class="promo-media-box">
+                <span class="promo-badge video-badge">Video Reel</span>
+                <video controls playsinline preload="metadata">
+                  <source src="./assets/videos/video1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="promo-card-body">
+                <span class="promo-date"><ion-icon name="time-outline"></ion-icon> Latest Facebook Reel</span>
+                <h3 class="promo-card-title">Lake Toya & Niseko Mountain Charter Reel</h3>
+                <p class="promo-card-text">
+                  Catch the stunning panoramic view of Mount Yotei and scenic roads during our recent private van tour across Hokkaido.
+                </p>
+                <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank" class="promo-fb-link">
+                  Watch on Facebook →
+                </a>
+              </div>
+            </article>
+
+            <!-- CARD 2: PROMOTIONAL SPECIAL -->
+            <article class="promo-card media-item" data-category="promo">
+              <div class="promo-media-box">
+                <span class="promo-badge">Limited Special</span>
+                <img src="./assets/images/P1.jpg" alt="Hokkaido VIP Charter Rate">
+              </div>
+              <div class="promo-card-body">
+                <span class="promo-date"><ion-icon name="pricetag-outline"></ion-icon> Seasonal Promotion</span>
+                <h3 class="promo-card-title">Early Bird 2026: VIP Hokkaido Private Van Special</h3>
+                <p class="promo-card-text">
+                  Enjoy daily flat charter rates covering up to 10 hours of private chauffering, airport transfers, fuel, and highway tolls included.
+                </p>
+                <a href="https://www.facebook.com/parrotstravelandtours/" target="_blank" class="promo-fb-link">
+                  Claim Offer via Messenger →
+                </a>
+              </div>
+            </article>
+
+            <!-- CARD 3: VIDEO POST -->
+            <article class="promo-card media-item" data-category="video">
+              <div class="promo-media-box">
+                <span class="promo-badge video-badge">Video Highlight</span>
+                <video controls playsinline preload="metadata">
+                  <source src="./assets/videos/video2.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="promo-card-body">
+                <span class="promo-date"><ion-icon name="videocam-outline"></ion-icon> Tour Highlight</span>
+                <h3 class="promo-card-title">Otaru Historic Canal Evening Stroll</h3>
+                <p class="promo-card-text">
+                  Fresh footage from our guests exploring Kitaichi Glass and local dessert shops along the serene illuminated canal.
+                </p>
+                <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank" class="promo-fb-link">
+                  View Full Reel →
+                </a>
+              </div>
+            </article>
+
+            <!-- CARD 4: TOUR DISPATCH -->
+            <article class="promo-card media-item" data-category="tour">
+              <div class="promo-media-box">
+                <span class="promo-badge" style="background: #2563eb;">Live Dispatch</span>
+                <img src="./assets/images/15.JPG" alt="Guest Tour Memories">
+              </div>
+              <div class="promo-card-body">
+                <span class="promo-date"><ion-icon name="camera-outline"></ion-icon> Guest Memories</span>
+                <h3 class="promo-card-title">Welcoming Travelers Across Hokkaido</h3>
+                <p class="promo-card-text">
+                  Thank you to our lovely guests for choosing Parrots Travel & Tours for their point-to-point family vacation in Japan.
+                </p>
+                <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank" class="promo-fb-link">
+                  Read Customer Story →
+                </a>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- RIGHT: OFFICIAL FACEBOOK LIVE FEED EMBED -->
+          <aside class="fb-sidebar-box">
+            <div class="fb-sidebar-header">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <div>
+                <h3>Official Facebook Feed</h3>
+                <span style="font-size: 11px; color: #94a3b8;">@ParrotsTravelTours</span>
+              </div>
+            </div>
+
+            <p style="font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 16px;">
+              Follow our official page to receive real-time announcements, holiday discounts, and live footage straight from Japan.
+            </p>
+
+            <!-- Facebook SDK Container -->
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
+            
+            <div class="fb-page" 
+                 data-href="https://www.facebook.com/profile.php?id=61592131445803" 
+                 data-tabs="timeline" 
+                 data-width="360" 
+                 data-height="520" 
+                 data-small-header="false" 
+                 data-adapt-container-width="true" 
+                 data-hide-cover="false" 
+                 data-show-facepile="true">
+            </div>
+
+            <div style="margin-top: 18px; text-align: center;">
+              <a href="https://www.facebook.com/profile.php?id=61592131445803" target="_blank" class="btn btn-primary" style="width: 100%; border-radius: 10px; font-size: 12px; padding: 10px;">
+                Open in Facebook App
+              </a>
+            </div>
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         CALL TO ACTION SECTION
+         ============================================== -->
+    <section class="cta" id="contact" style="background: #ff2d55; padding-block: 60px;">
+      <div class="container" style="text-align: center;">
+        <div class="cta-content">
+          <p class="section-subtitle" style="color: #ffffff; text-transform: uppercase; font-weight: 700; font-size: 13px; margin-bottom: 8px;">Direct Customer Support</p>
+          <h2 class="h2 section-title" style="color: #ffffff; font-size: 28px; font-weight: 800; margin-bottom: 12px;">Have questions about our current promotional packages?</h2>
+          <p class="section-text" style="color: rgba(255, 255, 255, 0.9); max-width: 600px; margin-inline: auto; font-size: 14px; line-height: 1.6;">
+            Chat with our travel experts directly on Facebook Messenger for custom pricing and immediate itinerary quotes.
+          </p>
+          <div style="margin-top: 25px;">
+            <a href="https://www.facebook.com/parrotstravelandtours/" target="_blank" class="btn" style="background: #ffffff; color: #ff2d55; border: 2px solid #ffffff; font-weight: 700; padding: 10px 24px; border-radius: 9999px;">
+              Chat on Messenger
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==============================================
+       CORPORATE FOOTER
+       ============================================== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-brand">
+          <div class="footer-brand-wrapper">
+            <a href="index.html" class="logo">
+              <img src="./assets/images/new logo.png" alt="Parrots Travel Logo">
+            </a>
+            <div class="brand-text-content">
+              <h3 class="brand-name">Parrots Travel & Tours</h3>
+              <p class="footer-text">
+                Discover the beauty of Japan with hassle-free, curated tour packages.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-contact">
+          <h4 class="contact-title">Contact Us</h4>
+          <ul class="contact-list">
+            <li>
+              <ion-icon name="call-outline"></ion-icon>
+              <a href="tel:+639338557720" class="contact-link">(0933) 855 7720</a>
+            </li>
+            <li>
+              <ion-icon name="call-outline"></ion-icon>
+              <a href="tel:+63756333182" class="contact-link">+(075) 633 3182</a>
+            </li>
+            <li>
+              <ion-icon name="mail-outline"></ion-icon>
+              <a href="mailto:info@parrotstravelandtours.com" class="contact-link">parrotstravelandtours.com</a>
+            </li>
+            <li>
+              <ion-icon name="location-outline"></ion-icon>
+              <address>Address # 36 Avenida Rizal West, Poblacion, Lingayen, Pangasinan</address>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <!-- Shared Global Script -->
+  <script src="script.js"></script>
+
+  <!-- Filter & Mobile Drawer Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Mobile Drawer Controls
+      const openBtn = document.getElementById('nav-open');
+      const closeBtn = document.getElementById('nav-close');
+      const navMenu = document.getElementById('main-nav');
+      const backdrop = document.getElementById('nav-backdrop');
+
+      function openMobileNav() {
+        if (navMenu) navMenu.classList.add('active');
+        if (backdrop) backdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobileNav() {
+        if (navMenu) navMenu.classList.remove('active');
+        if (backdrop) backdrop.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (openBtn) openBtn.addEventListener('click', openMobileNav);
+      if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
+      if (backdrop) backdrop.addEventListener('click', closeMobileNav);
+    });
+
+    // 2. Media Filter Engine
+    function filterMedia(category) {
+      // Toggle button active styling
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Filter cards
+      document.querySelectorAll('.media-item').forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

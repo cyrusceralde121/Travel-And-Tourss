@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signature Packages | Parrots Travel & Tours</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/new logo.png" type="image/svg+xml">
+
+  <!-- Typography Stack -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Consolidated Site CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Poppins"', '"Noto Sans JP"', 'sans-serif'],
+            display: ['"Montserrat"', 'sans-serif'],
+            jp: ['"Noto Sans JP"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              red: '#ff2d55',
+              dark: '#0F172A',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+</head>
+
+<body id="top" class="inner-page bg-[#FCFCFC] text-neutral-800 font-sans antialiased">
+  <!-- ==============================================
+       HEADER
+       ============================================== -->
+  <header class="parrots-header" id="main-header">
+    <div class="parrots-container">
+
+      <!-- LEFT: BRAND BADGE & TITLE -->
+      <a href="index.html" class="parrots-brand">
+        <div class="parrots-logo-badge">
+          <img src="./assets/images/new logo.png" alt="Parrots Travel Logo">
+        </div>
+        <div class="parrots-brand-text">
+          <span class="parrots-brand-title">PARROTS TRAVEL & TOURS</span>
+        </div>
+      </a>
+
+      <!-- CENTER: NAVIGATION LINKS -->
+      <nav class="parrots-nav" id="main-nav">
+
+  <!-- Drawer top: logo + close button -->
+  <div class="parrots-drawer-top">
+    <a href="index.html" class="parrots-drawer-logo" aria-label="Go to home page">
+      <img src="./assets/images/new logo.png" alt="Parrots Travel Logo">
+    </a>
+    <button class="parrots-nav-close" id="nav-close" aria-label="Close menu">&times;</button>
+  </div>
+
+  <ul class="parrots-nav-list">
+        <ul class="parrots-nav-list">
+          <li class="parrots-nav-item">
+            <a href="packages.html" class="parrots-nav-link active">
+              <span class="en-label">Tour Packages</span>
+              <span class="jp-label"></span>
+            </a>
+          </li>
+          <li class="parrots-nav-item">
+            <a href="guides.html" class="parrots-nav-link">
+              <span class="en-label">Seasonal Guides</span>
+              <span class="jp-label"></span>
+            </a>
+          </li>
+          <li class="parrots-nav-item">
+  <a href="promotional.html" class="parrots-nav-link">
+    <span class="en-label" data-i18n="nav_promos">Promotions & Media</span>
+    <span class="jp-label"></span>
+  </a>
+</li>
+          <li class="parrots-nav-item">
+            <a href="index.html#about-showcase" class="parrots-nav-link">
+              <span class="en-label">About Us</span>
+              <span class="jp-label"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+
+        <a href="https://www.facebook.com/parrotstravelandtours/" target="_blank" class="parrots-btn-inquire">
+          <span>INQUIRE</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <button class="parrots-burger" id="nav-open" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="parrots-backdrop" id="nav-backdrop"></div>
+
+  <main>
+    <!-- =========================================================
+         EDITORIAL PAGE HERO HEADER
+         ========================================================= -->
+    <section class="relative bg-white border-b border-neutral-200/80 pt-32 pb-16 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-red"></span>
+          <span class="text-[11px] font-bold tracking-widest uppercase text-brand-red font-jp"> · Curated Experiences</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-neutral-900 tracking-tight font-display">
+          Signature Packages
+        </h1>
+        <p class="text-sm md:text-base text-neutral-500 mt-3 max-w-2xl leading-relaxed">
+          Thoughtfully designed, private charter itineraries across Japan. Discover breathtaking landscapes, hot spring resorts, and cultural centers in absolute privacy and comfort.
+        </p>
+      </div>
+      
+      <div class="absolute right-6 -bottom-6 select-none pointer-events-none opacity-[0.03] text-neutral-900 font-jp font-black text-8xl md:text-9xl whitespace-nowrap">
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SIGNATURE PACKAGES GRID
+         ========================================================= -->
+    <section class="py-20 bg-[#F9FAFB]">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-12">
+          <div class="flex items-center gap-2 bg-neutral-100 p-1.5 rounded-full border border-neutral-200/80">
+            <button class="px-4 py-1.5 rounded-full bg-white text-neutral-900 text-xs font-bold shadow-xs">
+              All Journeys (1)
+            </button>
+            <button class="px-4 py-1.5 rounded-full text-neutral-600 hover:text-neutral-900 text-xs font-medium transition">
+              VIP Charters
+            </button>
+            <button class="px-4 py-1.5 rounded-full text-neutral-400 text-xs font-medium cursor-not-allowed">
+              Seasonal Group
+            </button>
+          </div>
+
+          <span class="text-xs text-neutral-400 font-mono">
+            Showing 1 Featured Private Charter
+          </span>
+        </div>
+
+        <!-- Main Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- CARD 1: ACTIVE VIP HOKKAIDO TOUR -->
+          <article class="group relative bg-white rounded-2xl overflow-hidden border border-neutral-200/80 hover:border-neutral-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-16/10 w-full overflow-hidden bg-neutral-900">
+  <img 
+    src="./assets/images/hokkaido-japan.jpg" 
+    alt="VIP Hokkaido Tour" 
+    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-95 group-hover:opacity-0"
+  />
+
+                <video 
+                  class="card-video-teaser absolute inset-0 w-full h-full object-cover pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                  muted loop playsinline preload="none"
+                >
+                  <source src="assets/videos/hokkaido-teaser.mp4" type="video/mp4">
+                </video>
+
+                <div class="absolute top-4 left-4 z-10 flex gap-2">
+                  <span class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-brand-dark/85 text-white backdrop-blur-md border border-white/10">
+                    VIP Charter
+                  </span>
+                  <span class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-brand-red text-white backdrop-blur-md">
+                    Signature
+                  </span>
+                </div>
+
+                <button 
+                  data-target="modal-vip-hokkaido" 
+                  class="btn-view-details absolute bottom-3.5 right-3.5 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 hover:bg-white text-neutral-900 text-xs font-semibold shadow-md backdrop-blur-md transition-all hover:scale-105"
+                >
+                  <svg class="w-3.5 h-3.5 text-brand-red fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <span>View Itinerary</span>
+                </button>
+              </div>
+
+              <!-- Content Area -->
+              <div class="p-6">
+                <div class="flex items-center justify-between text-xs font-mono text-neutral-400 mb-2">
+                  <span class="flex items-center gap-1 text-neutral-700 font-semibold">
+                    <svg class="w-3.5 h-3.5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    6 Days / 5 Nights
+                  </span>
+                  <span>Hokkaido, Japan</span>
+                </div>
+
+                <h3 class="text-xl font-bold text-neutral-900 group-hover:text-brand-red transition-colors font-display">
+                  VIP Hokkaido Private Charter
+                </h3>
+                <p class="text-xs text-neutral-400 font-jp mt-0.5">
+                  洞爺湖・登別・ニセコ・小樽・札幌 贅沢周遊
+                </p>
+
+                <div class="mt-4 p-3 rounded-lg bg-neutral-50 border border-neutral-100 text-xs text-neutral-600 leading-relaxed">
+                  <span class="font-semibold text-neutral-900 block mb-1">Route Overview:</span>
+                  Lake Toya Hot Springs → Hell Valley → Niseko Alpine Resort → Otaru Historic Canal → Sapporo & Furano.
+                </div>
+
+                <div class="flex flex-wrap gap-1.5 mt-4">
+                  <span class="px-2.5 py-1 bg-neutral-100 text-neutral-700 text-[11px] font-medium rounded-md">10h Service / Day</span>
+                  <span class="px-2.5 py-1 bg-neutral-100 text-neutral-700 text-[11px] font-medium rounded-md">1–5 Pax Private Van</span>
+                  <span class="px-2.5 py-1 bg-neutral-100 text-neutral-700 text-[11px] font-medium rounded-md">English/Chinese Driver</span>
+                  <span class="px-2.5 py-1 bg-neutral-100 text-neutral-700 text-[11px] font-medium rounded-md">Fuel & Tolls Included</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Price & Actions -->
+            <div class="p-6 pt-0">
+              <div class="border-t border-neutral-100 pt-4 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-neutral-400 uppercase tracking-widest block font-medium">Daily Charter Rate</span>
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-2xl font-black text-neutral-900 package-price" data-php="₱38,000" data-jpy="¥100,000">¥100,000</span>
+                    <span class="text-xs text-neutral-500">/ day</span>
+                  </div>
+                </div>
+
+                <button 
+                  data-target="modal-vip-hokkaido" 
+                  class="btn-view-details inline-flex items-center gap-1 px-4 py-2 rounded-full bg-neutral-900 hover:bg-brand-red text-white text-xs font-semibold tracking-wide transition-all shadow-sm"
+                >
+                  <span>View Details</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+
+    <!-- =========================================================
+         VIP HOKKAIDO PRIVATE TOUR MODAL
+         ========================================================= -->
+    <div class="modal-overlay" id="modal-vip-hokkaido">
+      <div class="modal-content">
+        <button class="close-modal" aria-label="Close modal">&times;</button>
+        
+        <h2 class="h2">Hokkaido VIP Private Tour Details</h2>
+        
+        <!-- Quick Info Banner -->
+        <div class="modal-info-banner">
+          <div class="info-item">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>6D / 5N</span>
+          </div>
+          <div class="info-item">
+            <ion-icon name="people-outline"></ion-icon>
+            <span>1–5 Pax</span>
+          </div>
+          <div class="info-item">
+            <ion-icon name="car-outline"></ion-icon>
+            <span>10h Service/Day</span>
+          </div>
+          <div class="info-item price-highlight">
+            <span>¥100,000</span>
+            <span style="font-size: 11px; font-weight: normal; color: #666;">/ night</span>
+          </div>
+        </div>
+
+    <div class="modal-body">
+          
+          <!-- ============================================== -->
+          <!-- 1. SLIDE VIEWER SECTION WITH FULLSCREEN BUTTON -->
+          <!-- ============================================== -->
+          <div class="slide-viewer-wrapper">
+            <div class="slide-main-stage">
+              <button type="button" class="slide-arrow prev-slide" aria-label="Previous Slide">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </button>
+              
+              <img id="hokkaido-active-slide" src="./assets/images/hokkaido-slide-1.jpg" alt="Day 1 Itinerary Slide">
+              
+              <!-- Fullscreen Expand Button -->
+              <button type="button" class="slide-fullscreen-btn" id="open-slide-fullscreen" title="View Fullscreen">
+                <ion-icon name="scan-outline"></ion-icon>
+              </button>
+
+              <button type="button" class="slide-arrow next-slide" aria-label="Next Slide">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </button>
+              <div class="slide-counter"><span id="current-slide-num">1</span> / 9</div>
+            </div>
+
+            <!-- Thumbnail Strip -->
+            <div class="slide-thumbnails">
+              <img src="./assets/images/hokkaido-slide-1.jpg" class="thumb active" data-index="1" alt="Slide 1">
+              <img src="./assets/images/hokkaido-slide-2.jpg" class="thumb" data-index="2" alt="Slide 2">
+              <img src="./assets/images/hokkaido-slide-3.jpg" class="thumb" data-index="3" alt="Slide 3">
+              <img src="./assets/images/hokkaido-slide-4.jpg" class="thumb" data-index="4" alt="Slide 4">
+              <img src="./assets/images/hokkaido-slide-5.jpg" class="thumb" data-index="5" alt="Slide 5">
+              <img src="./assets/images/hokkaido-slide-6.jpg" class="thumb" data-index="6" alt="Slide 6">
+              <img src="./assets/images/hokkaido-slide-7.jpg" class="thumb" data-index="7" alt="Slide 7">
+              <img src="./assets/images/hokkaido-slide-8.jpg" class="thumb" data-index="8" alt="Slide 8">
+              <img src="./assets/images/hokkaido-slide-9.jpg" class="thumb" data-index="9" alt="Slide 9">
+            </div>
+          </div>
+
+          <!-- ============================================== -->
+          <!-- 2. OFFICIAL SPOKESPERSON BRIEFING + INCLUSIONS -->
+          <!-- ============================================== -->
+          <div class="modal-overview-grid" style="display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start; margin-top: 30px; padding-top: 24px; border-top: 1px solid #f1f5f9;">
+            
+            <!-- Featured Spokesperson Video (9:16 Portrait Reel) -->
+            <div class="modal-feature-video" style="width: 100%; max-width: 280px; margin: 0 auto; background: #0f172a; border-radius: 16px; overflow: hidden; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);">
+              <div style="padding: 10px 12px; background: #0f172a; color: #ffffff; display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: #fb7185;">Official Briefing</span>
+                <span style="font-size: 10px; background: rgba(255, 255, 255, 0.15); padding: 2px 6px; border-radius: 4px;">0:38</span>
+              </div>
+              <video controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; background: #000000;">
+                <source src="./assets/videos/hokkaidoo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div style="padding: 8px 12px; background: #0f172a; font-size: 11px; color: #cbd5e1; text-align: center;">
+                Watch Tour Overview with Parrots Travel Host
+              </div>
+            </div>
+
+            <!-- Inclusions -->
+            <div class="modal-details">
+              <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 12px;">Package Inclusions:</h3>
+              <ul class="inclusion-list">
+                <li><ion-icon name="car-sport-outline"></ion-icon> Private vehicle with flexible stops (Up to 10 hours/day)</li>
+                <li><ion-icon name="chatbubbles-outline"></ion-icon> English or Chinese-speaking professional driver</li>
+                <li><ion-icon name="bed-outline"></ion-icon> Hotel Pick-up & Drop-off (Lake Toya, Niseko, Sapporo)</li>
+                <li><ion-icon name="checkmark-circle-outline"></ion-icon> Fuel, highway tolls, and driver parking fees included</li>
+                <li><ion-icon name="document-text-outline"></ion-icon> Complimentary Japan visa consultation & documentation support</li>
+                <li><ion-icon name="close-circle-outline" style="color: #888;"></ion-icon> <span style="color: #777;">Not Included: Sightseeing admissions, personal meals & beverages</span></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- ============================================== -->
+          <!-- 3. DAY-BY-DAY ITINERARY SUMMARY               -->
+          <!-- ============================================== -->
+          <div class="modal-details" style="margin-top: 30px; padding-top: 24px; border-top: 1px solid #f1f5f9;">
+            <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 14px;">Tour Route Summary:</h3>
+            <ul class="inclusion-list">
+              <li><ion-icon name="location-outline"></ion-icon> <strong>Day 1:</strong> New Chitose Airport &rarr; Lake Toya Onsen & Ryokan Check-in</li>
+              <li><ion-icon name="location-outline"></ion-icon> <strong>Day 2:</strong> Lake Toya &harr; Noboribetsu Excursion (Jigokudani Hell Valley, Edo Village)</li>
+              <li><ion-icon name="location-outline"></ion-icon> <strong>Day 3:</strong> Lake Toya &rarr; Niseko Alpine Mountain Resort & Takahashi Dairy Farm</li>
+              <li><ion-icon name="location-outline"></ion-icon> <strong>Day 4:</strong> Niseko/Toya &rarr; Otaru Historic Canal &rarr; Sapporo (Susukino Night Walk)</li>
+              <li><ion-icon name="location-outline"></ion-icon> <strong>Day 5:</strong> Furano & Biei Day Trip (Seasonal Flower Hills / Winter Snowscape)</li>
+              <li><ion-icon name="location-outline"></ion-icon> <strong>Day 6:</strong> Tanukikoji Sapporo Shopping & Departure to New Chitose Airport</li>
+            </ul>
+          </div>
+
+          <!-- ============================================== -->
+          <!-- 4. EXPERIENCE PREVIEW & SCENIC REELS           -->
+          <!-- ============================================== -->
+          <div class="modal-video-section" style="margin-top: 30px; border-top: 1px solid #f1f5f9; padding-top: 24px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #ff2d55; display: inline-block;"></span>
+              <h3 style="font-size: 16px; font-weight: 700; color: #0f172a; margin: 0;">Experience Previews & Highlights</h3>
+            </div>
+            
+          <div class="modal-video-grid">
+  <div class="modal-video-card">
+    <iframe
+      src="https://www.youtube.com/embed/QO1OM_kTjSw?rel=0&playsinline=1"
+      title="Parrots Travel video 1" loading="lazy"
+      allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    <span class="video-caption"></span>
+  </div>
+
+  <div class="modal-video-card">
+    <iframe
+      src="https://www.youtube.com/embed/Y5PKBR4NQl8?rel=0&playsinline=1"
+      title="Parrots Travel video 2" loading="lazy"
+      allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    <span class="video-caption"></span>
+  </div>
+
+  <div class="modal-video-card">
+    <iframe
+      src="https://www.youtube.com/embed/a8pQ4wbidWE?rel=0&playsinline=1"
+      title="Parrots Travel video 3" loading="lazy"
+      allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    <span class="video-caption"></span>
+  </div>
+</div>
+
+          <!-- ============================================== -->
+          <!-- 5. MODAL BOOKING ACTION BUTTON                 -->
+          <!-- ============================================== -->
+          <div style="margin-top: 35px;">
+            <a href="https://www.facebook.com/parrotstravelandtours/" target="_blank" class="modal-btn" style="display: block; text-decoration: none;">
+              Book Hokkaido VIP Charter
+            </a>
+          </div>
+
+        </div>
+
+    <!-- Fullscreen Lightbox Overlay -->
+    <div id="slide-lightbox" class="slide-lightbox-overlay">
+      <button id="close-slide-fullscreen" class="close-lightbox" aria-label="Close Lightbox">&times;</button>
+      <div class="lightbox-content-box">
+        <button class="lightbox-arrow prev-lb" aria-label="Previous image">&#8249;</button>
+        <img id="lightbox-img" src="./assets/images/hokkaido-slide-1.jpg" alt="Expanded Tour Slide">
+        <button class="lightbox-arrow next-lb" aria-label="Next image">&#8250;</button>
+      </div>
+      <div class="lightbox-counter">Slide <span id="lb-current-num">1</span> of 9</div>
+    </div>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-brand">
+          <div class="footer-brand-wrapper">
+            <a href="index.html" class="logo">
+              <img src="./assets/images/new logo.png" alt="Parrots Travel Logo">
+            </a>
+            <div class="brand-text-content">
+              <h3 class="brand-name">Parrots Travel & Tours</h3>
+              <p class="footer-text">
+                Discover the beauty of Japan with hassle-free, curated tour packages.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-contact">
+          <h4 class="contact-title">Contact Us</h4>
+          <ul class="contact-list">
+            <li>
+              <ion-icon name="call-outline"></ion-icon>
+              <a href="tel:+639338557720" class="contact-link">(0933) 855 7720</a>
+            </li>
+            <li>
+              <ion-icon name="call-outline"></ion-icon>
+              <a href="tel:+63756333182" class="contact-link">+(075) 633 3182</a>
+            </li>
+            <li>
+              <ion-icon name="mail-outline"></ion-icon>
+              <a href="mailto:info@parrotstravelandtours.com" class="contact-link">parrotstravelandtours.com</a>
+            </li>
+            <li>
+              <ion-icon name="location-outline"></ion-icon>
+              <address>Address # 36 Avenida Rizal West, Poblacion, Lingayen, Pangasinan</address>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <!-- Interactivity Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Mobile Drawer Controls
+      const openBtn = document.getElementById('nav-open');
+      const closeBtn = document.getElementById('nav-close');
+      const navMenu = document.getElementById('main-nav');
+      const backdrop = document.getElementById('nav-backdrop');
+
+      function openMobileNav() {
+        if (navMenu) navMenu.classList.add('active');
+        if (backdrop) backdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobileNav() {
+        if (navMenu) navMenu.classList.remove('active');
+        if (backdrop) backdrop.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (openBtn) openBtn.addEventListener('click', openMobileNav);
+      if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
+      if (backdrop) backdrop.addEventListener('click', closeMobileNav);
+
+      // 2. Modal Window Controls (With Video Pause Routine)
+      const viewBtns = document.querySelectorAll(".btn-view-details");
+      const closeBtns = document.querySelectorAll(".close-modal");
+      const modalOverlays = document.querySelectorAll(".modal-overlay");
+      const lightboxOverlay = document.getElementById("slide-lightbox");
+
+      const closeAllModals = () => {
+        modalOverlays.forEach((m) => m.classList.remove("is-visible"));
+        if (lightboxOverlay) lightboxOverlay.style.display = "none";
+        document.body.style.overflow = "";
+
+        // Stop all videos playing in modal
+        document.querySelectorAll(".modal-video-card video").forEach((v) => {
+          v.pause();
+          v.currentTime = 0;
+        });
+      };
+
+      viewBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          closeAllModals();
+          const target = document.getElementById(btn.getAttribute("data-target"));
+          if (target) {
+            target.classList.add("is-visible");
+            document.body.style.overflow = "hidden";
+          }
+        });
+      });
+
+      closeBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          closeAllModals();
+        });
+      });
+
+      modalOverlays.forEach((overlay) => {
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) closeAllModals();
+        });
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeAllModals();
+      });
+
+      // 3. Modal Slide Viewer
+      const modalSlideImg = document.getElementById("hokkaido-active-slide");
+      const modalCounterEl = document.getElementById("current-slide-num");
+      const thumbs = document.querySelectorAll(".slide-thumbnails .thumb");
+      const prevSlideBtn = document.querySelector(".slide-viewer-wrapper .prev-slide");
+      const nextSlideBtn = document.querySelector(".slide-viewer-wrapper .next-slide");
+      let slideIdx = 1;
+      const totalSlides = 9;
+
+      function updateSlide(idx) {
+        if (!modalSlideImg) return;
+        if (idx < 1) idx = totalSlides;
+        if (idx > totalSlides) idx = 1;
+        slideIdx = idx;
+
+        modalSlideImg.style.opacity = "0.3";
+        setTimeout(() => {
+          modalSlideImg.src = `./assets/images/hokkaido-slide-${slideIdx}.jpg`;
+          modalSlideImg.style.opacity = "1";
+        }, 120);
+
+        if (modalCounterEl) modalCounterEl.textContent = slideIdx;
+
+        thumbs.forEach((t) => {
+          const thumbIdx = parseInt(t.dataset.index, 10);
+          if (thumbIdx === slideIdx) {
+            t.classList.add("active");
+            t.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+          } else {
+            t.classList.remove("active");
+          }
+        });
+
+        if (lightboxOverlay && lightboxOverlay.style.display === "flex") {
+          syncLightbox(slideIdx);
+        }
+      }
+
+      if (prevSlideBtn) prevSlideBtn.addEventListener("click", () => updateSlide(slideIdx - 1));
+      if (nextSlideBtn) nextSlideBtn.addEventListener("click", () => updateSlide(slideIdx + 1));
+
+      thumbs.forEach((t) => {
+        t.addEventListener("click", () => {
+          updateSlide(parseInt(t.dataset.index, 10));
+        });
+      });
+
+      // 4. Fullscreen Lightbox Controls
+      const openLbBtn = document.getElementById("open-slide-fullscreen");
+      const closeLbBtn = document.getElementById("close-slide-fullscreen");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lbCounter = document.getElementById("lb-current-num");
+      const prevLbBtn = document.querySelector(".prev-lb");
+      const nextLbBtn = document.querySelector(".next-lb");
+
+      function syncLightbox(idx) {
+        if (!lightboxImg) return;
+        lightboxImg.src = `./assets/images/hokkaido-slide-${idx}.jpg`;
+        if (lbCounter) lbCounter.textContent = idx;
+      }
+
+      if (openLbBtn && lightboxOverlay) {
+        openLbBtn.addEventListener("click", () => {
+          syncLightbox(slideIdx);
+          lightboxOverlay.style.display = "flex";
+        });
+        if (closeLbBtn) closeLbBtn.addEventListener("click", () => (lightboxOverlay.style.display = "none"));
+        if (prevLbBtn) prevLbBtn.addEventListener("click", () => updateSlide(slideIdx - 1));
+        if (nextLbBtn) nextLbBtn.addEventListener("click", () => updateSlide(slideIdx + 1));
+      }
+    });
+
+    // 5. Currency Toggle
+    function toggleCurrency(curr) {
+      const btnPhp = document.getElementById("btn-php");
+      const btnJpy = document.getElementById("btn-jpy");
+      const prices = document.querySelectorAll(".package-price");
+
+      if (curr === "PHP") {
+        btnPhp.classList.add("active");
+        btnJpy.classList.remove("active");
+        prices.forEach(el => el.textContent = el.getAttribute("data-php") || "₱38,000");
+      } else {
+        btnJpy.classList.add("active");
+        btnPhp.classList.remove("active");
+        prices.forEach(el => el.textContent = el.getAttribute("data-jpy") || "¥100,000");
+      }
+    }
+  </script>
+</body>
+</html>

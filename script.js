@@ -1,262 +1,220 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ==========================================
-  // 1. MODAL WINDOW CONTROLS
-  // ==========================================
-  const viewBtns = document.querySelectorAll(".btn-view-details");
-  const closeBtns = document.querySelectorAll(".close-modal");
-  const modalOverlays = document.querySelectorAll(".modal-overlay");
-
-  const stopAllVideos = () => {
-    document.querySelectorAll(".modal-overlay video").forEach((video) => {
-      video.pause();
-      video.currentTime = 0;
-    });
+  // 1. HEADER SCROLL EFFECT (CRITICAL: ADDS SOLID/FROSTED BACKGROUND)
+  const header = document.getElementById("main-header");
+  
+  const handleScroll = () => {
+    if (!header) return;
+    if (window.scrollY > 20) {
+      header.classList.add("header-scrolled");
+    } else {
+      header.classList.remove("header-scrolled");
+    }
   };
 
-  const closeAllModals = () => {
-    stopAllVideos();
-    modalOverlays.forEach((modal) => {
-      modal.style.display = "none";
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll(); // Run immediately on page load
+
+  // 2. Mobile Drawer Controls
+  const navOpen = document.getElementById("nav-open");
+  const navClose = document.getElementById("nav-close");
+  const mainNav = document.getElementById("main-nav");
+  const backdrop = document.getElementById("nav-backdrop");
+
+  if (navOpen && mainNav) {
+    navOpen.addEventListener("click", () => {
+      mainNav.classList.add("active");
+      if (backdrop) backdrop.classList.add("active");
+      document.body.style.overflow = "hidden";
     });
+  }
+
+  const closeMenu = () => {
+    if (mainNav) mainNav.classList.remove("active");
+    if (backdrop) backdrop.classList.remove("active");
     document.body.style.overflow = "";
   };
 
-  viewBtns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      closeAllModals();
+  if (navClose) navClose.addEventListener("click", closeMenu);
+  if (backdrop) backdrop.addEventListener("click", closeMenu);
 
-      const targetId = btn.getAttribute("data-target");
-      const targetModal = document.getElementById(targetId);
-
-      if (targetModal) {
-        targetModal.style.display = "flex";
-        document.body.style.overflow = "hidden";
-      }
-    });
-  });
-
-  closeBtns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      closeAllModals();
-    });
-  });
-
-  modalOverlays.forEach((overlay) => {
-    overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) {
-        closeAllModals();
-      }
-    });
-  });
-
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      if (lightboxOverlay && lightboxOverlay.style.display === "flex") {
-        lightboxOverlay.style.display = "none";
-      } else {
-        closeAllModals();
-      }
+  // 3. Currency Switcher
+  window.toggleCurrency = (curr) => {
+    const btnPhp = document.getElementById("btn-php");
+    const btnJpy = document.getElementById("btn-jpy");
+    if (curr === "PHP") {
+      if (btnPhp) btnPhp.classList.add("active");
+      if (btnJpy) btnJpy.classList.remove("active");
+    } else {
+      if (btnJpy) btnJpy.classList.add("active");
+      if (btnPhp) btnPhp.classList.remove("active");
     }
-  });
+  };
 
-
-  // ==========================================
-  // 2. MODAL SLIDE VIEWER (INSIDE MODAL)
-  // ==========================================
-  const modalSlideImg = document.getElementById("hokkaido-active-slide");
-  const modalCounterEl = document.getElementById("current-slide-num");
-  const modalThumbs = document.querySelectorAll(".slide-viewer-wrapper .slide-thumbnails .thumb");
-  const modalPrevBtn = document.querySelector(".slide-viewer-wrapper .prev-slide");
-  const modalNextBtn = document.querySelector(".slide-viewer-wrapper .next-slide");
-
-  let modalSlideIndex = 1;
-  const modalTotalSlides = 9;
-
-  function updateModalSlide(index) {
-    if (!modalSlideImg) return;
-
-    if (index < 1) index = modalTotalSlides;
-    if (index > modalTotalSlides) index = 1;
-
-    modalSlideIndex = index;
-
-    modalSlideImg.style.opacity = "0.3";
-    setTimeout(() => {
-      // Use your modal image source format
-      modalSlideImg.src = `./assets/images/hokkaido-slide-${modalSlideIndex}.jpg`;
-      modalSlideImg.style.opacity = "1";
-    }, 120);
-
-    if (modalCounterEl) modalCounterEl.textContent = modalSlideIndex;
-
-    modalThumbs.forEach((thumb) => {
-      const thumbIndex = parseInt(thumb.dataset.index, 10);
-      if (thumbIndex === modalSlideIndex) {
-        thumb.classList.add("active");
-        thumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-      } else {
-        thumb.classList.remove("active");
-      }
-    });
-
-    if (lightboxOverlay && lightboxOverlay.style.display === "flex") {
-      syncLightbox(modalSlideIndex);
-    }
-  }
-
-  if (modalPrevBtn) {
-    modalPrevBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      updateModalSlide(modalSlideIndex - 1);
-    });
-  }
-
-  if (modalNextBtn) {
-    modalNextBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      updateModalSlide(modalSlideIndex + 1);
-    });
-  }
-
-  modalThumbs.forEach((thumb) => {
-    thumb.addEventListener("click", (e) => {
-      e.preventDefault();
-      const selectedIndex = parseInt(thumb.dataset.index, 10);
-      updateModalSlide(selectedIndex);
-    });
-  });
-
-
-  // ==========================================
-  // 3. OUTSIDE MIDDLE SECTION SLIDE VIEWER (P1-P9)
-  // ==========================================
-  const pvkMainImg = document.getElementById("pvk-main-display");
-  const pvkCounter = document.getElementById("pvk-curr-page");
+  // 4. Showcase Slider (P1 to P9)
+  const pvkImg = document.getElementById("pvk-main-display");
+  const pvkPage = document.getElementById("pvk-curr-page");
   const pvkThumbs = document.querySelectorAll(".pvk-thumb-item");
-  const pvkPrevBtn = document.getElementById("pvk-btn-prev");
-  const pvkNextBtn = document.getElementById("pvk-btn-next");
-
-  let pvkIndex = 1;
+  const prevBtn = document.getElementById("pvk-btn-prev");
+  const nextBtn = document.getElementById("pvk-btn-next");
+  let pvkIdx = 1;
   const pvkTotal = 9;
 
-  function updatePvkSlide(index) {
-    if (!pvkMainImg) return;
-
-    if (index < 1) index = pvkTotal;
-    if (index > pvkTotal) index = 1;
-
-    pvkIndex = index;
-
-    pvkMainImg.style.opacity = "0.3";
+  function renderPvk(idx) {
+    if (!pvkImg) return;
+    if (idx < 1) idx = pvkTotal;
+    if (idx > pvkTotal) idx = 1;
+    pvkIdx = idx;
+    pvkImg.style.opacity = "0.3";
     setTimeout(() => {
-      pvkMainImg.src = `./assets/images/P${pvkIndex}.jpg`;
-      pvkMainImg.style.opacity = "1";
+      pvkImg.src = `./assets/images/P${pvkIdx}.jpg`;
+      pvkImg.style.opacity = "1";
     }, 120);
-
-    if (pvkCounter) pvkCounter.textContent = pvkIndex;
-
-    pvkThumbs.forEach((t) => {
-      const idx = parseInt(t.dataset.idx, 10);
-      if (idx === pvkIndex) {
-        t.classList.add("pvk-is-active");
-        t.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    if (pvkPage) pvkPage.textContent = pvkIdx;
+    pvkThumbs.forEach((thumb) => {
+      const i = parseInt(thumb.dataset.idx, 10);
+      if (i === pvkIdx) {
+        thumb.classList.add("pvk-is-active");
+        thumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
       } else {
-        t.classList.remove("pvk-is-active");
+        thumb.classList.remove("pvk-is-active");
       }
     });
   }
 
-  if (pvkPrevBtn) {
-    pvkPrevBtn.addEventListener("click", (e) => {
+  if (prevBtn) prevBtn.addEventListener("click", (e) => { e.preventDefault(); renderPvk(pvkIdx - 1); });
+  if (nextBtn) nextBtn.addEventListener("click", (e) => { e.preventDefault(); renderPvk(pvkIdx + 1); });
+  pvkThumbs.forEach((t) => {
+    t.addEventListener("click", (e) => {
       e.preventDefault();
-      updatePvkSlide(pvkIndex - 1);
+      renderPvk(parseInt(t.dataset.idx, 10));
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Header frosted scroll transition
+  const header = document.getElementById("main-header");
+  const onScroll = () => {
+    if (!header) return;
+    if (window.scrollY > 30) {
+      header.classList.add("header-scrolled");
+    } else {
+      header.classList.remove("header-scrolled");
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // 2. Mobile drawer open/close
+  const navOpen = document.getElementById("nav-open");
+  const navClose = document.getElementById("nav-close");
+  const mainNav = document.getElementById("main-nav");
+  const backdrop = document.getElementById("nav-backdrop");
+
+  const openDrawer = () => {
+    if (mainNav) mainNav.classList.add("active");
+    if (backdrop) backdrop.classList.add("active");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeDrawer = () => {
+    if (mainNav) mainNav.classList.remove("active");
+    if (backdrop) backdrop.classList.remove("active");
+    document.body.style.overflow = "";
+  };
+
+  if (navOpen) navOpen.addEventListener("click", openDrawer);
+  if (navClose) navClose.addEventListener("click", closeDrawer);
+  if (backdrop) backdrop.addEventListener("click", closeDrawer);
+
+  document.querySelectorAll(".jalpak-nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth < 992) closeDrawer();
+    });
+  });
+
+  // 3. Currency toggle function
+window.toggleCurrency = function(curr) {
+  const btnPhp = document.getElementById("btn-php");
+  const btnJpy = document.getElementById("btn-jpy");
+  const prices = document.querySelectorAll(".package-price");
+  const jpLabels = document.querySelectorAll(".jp-label");
+
+  if (curr === "PHP") {
+    // 1. Update button states
+    if (btnPhp) btnPhp.classList.add("active");
+    if (btnJpy) btnJpy.classList.remove("active");
+
+    // 2. Hide Japanese subtitles completely
+    jpLabels.forEach((el) => {
+      el.style.display = "none";
+    });
+
+    // 3. Switch prices to PHP
+    prices.forEach((el) => {
+      el.textContent = el.getAttribute("data-php") || "₱38,000";
+    });
+
+  } else if (curr === "JPY") {
+    // 1. Update button states
+    if (btnJpy) btnJpy.classList.add("active");
+    if (btnPhp) btnPhp.classList.remove("active");
+
+    // 2. Show Japanese subtitles again
+    jpLabels.forEach((el) => {
+      el.style.display = "block";
+    });
+
+    // 3. Switch prices to JPY
+    prices.forEach((el) => {
+      el.textContent = el.getAttribute("data-jpy") || "¥100,000";
+    });
+  }
+};
+
+  // 4. Showcase slider (P1 to P9)
+  const pvkImg = document.getElementById("pvk-main-display");
+  const pvkPage = document.getElementById("pvk-curr-page");
+  const pvkThumbs = document.querySelectorAll(".pvk-thumb-item");
+  const prevBtn = document.getElementById("pvk-btn-prev");
+  const nextBtn = document.getElementById("pvk-btn-next");
+
+  let pvkIdx = 1;
+  const pvkTotal = 9;
+
+  function renderPvk(idx) {
+    if (!pvkImg) return;
+    if (idx < 1) idx = pvkTotal;
+    if (idx > pvkTotal) idx = 1;
+    pvkIdx = idx;
+
+    pvkImg.style.opacity = "0.3";
+    setTimeout(() => {
+      pvkImg.src = `./assets/images/P${pvkIdx}.jpg`;
+      pvkImg.style.opacity = "1";
+    }, 120);
+
+    if (pvkPage) pvkPage.textContent = pvkIdx;
+
+    pvkThumbs.forEach((thumb) => {
+      const i = parseInt(thumb.dataset.idx, 10);
+      if (i === pvkIdx) {
+        thumb.classList.add("pvk-is-active");
+        thumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      } else {
+        thumb.classList.remove("pvk-is-active");
+      }
     });
   }
 
-  if (pvkNextBtn) {
-    pvkNextBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      updatePvkSlide(pvkIndex + 1);
-    });
-  }
+  if (prevBtn) prevBtn.addEventListener("click", (e) => { e.preventDefault(); renderPvk(pvkIdx - 1); });
+  if (nextBtn) nextBtn.addEventListener("click", (e) => { e.preventDefault(); renderPvk(pvkIdx + 1); });
 
   pvkThumbs.forEach((t) => {
     t.addEventListener("click", (e) => {
       e.preventDefault();
-      updatePvkSlide(parseInt(t.dataset.idx, 10));
+      renderPvk(parseInt(t.dataset.idx, 10));
     });
   });
-
-
-  // ==========================================
-  // 4. FULLSCREEN LIGHTBOX CONTROLS
-  // ==========================================
-  const openLbBtn = document.getElementById("open-slide-fullscreen");
-  const closeLbBtn = document.getElementById("close-slide-fullscreen");
-  const lightboxOverlay = document.getElementById("slide-lightbox");
-  const lightboxImg = document.getElementById("lightbox-img");
-  const lbCounter = document.getElementById("lb-current-num");
-  const prevLbBtn = document.querySelector(".prev-lb");
-  const nextLbBtn = document.querySelector(".next-lb");
-
-  function syncLightbox(idx = modalSlideIndex) {
-    if (!lightboxImg) return;
-    lightboxImg.src = `./assets/images/hokkaido-slide-${idx}.jpg`;
-    if (lbCounter) lbCounter.textContent = idx;
-  }
-
-  if (openLbBtn && lightboxOverlay) {
-    openLbBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      syncLightbox(modalSlideIndex);
-      lightboxOverlay.style.display = "flex";
-    });
-
-    if (closeLbBtn) {
-      closeLbBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        lightboxOverlay.style.display = "none";
-      });
-    }
-
-    lightboxOverlay.addEventListener("click", (e) => {
-      if (e.target === lightboxOverlay) {
-        lightboxOverlay.style.display = "none";
-      }
-    });
-
-    if (prevLbBtn && nextLbBtn) {
-      prevLbBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        updateModalSlide(modalSlideIndex - 1);
-      });
-
-      nextLbBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        updateModalSlide(modalSlideIndex + 1);
-      });
-    }
-  }
-
-
-  // ==========================================
-  // 5. NAVBAR MOBILE CONTROLS
-  // ==========================================
-  const navOpenBtn = document.querySelector("[data-nav-open-btn]");
-  const navCloseBtn = document.querySelector("[data-nav-close-btn]");
-  const navbar = document.querySelector("[data-navbar]");
-  const overlay = document.querySelector("[data-overlay]");
-
-  const navElemArr = [navOpenBtn, navCloseBtn, overlay];
-
-  for (let i = 0; i < navElemArr.length; i++) {
-    if (navElemArr[i]) {
-      navElemArr[i].addEventListener("click", () => {
-        if (navbar) navbar.classList.toggle("active");
-        if (overlay) overlay.classList.toggle("active");
-      });
-    }
-  }
 });
+
