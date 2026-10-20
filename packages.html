@@ -240,7 +240,7 @@
                 <div>
                   <span class="text-[10px] text-neutral-400 uppercase tracking-widest block font-medium">Daily Charter Rate</span>
                   <div class="flex items-baseline gap-1">
-                    <span class="text-2xl font-black text-neutral-900 package-price" data-php="₱38,000" data-jpy="¥100,000">¥100,000</span>
+                    <span class="text-2xl font-black text-neutral-900 package-price" data-php="₱38,000" data-jpy="¥80,000">¥80,000</span>
                     <span class="text-xs text-neutral-500">/ day</span>
                   </div>
                 </div>
@@ -281,7 +281,7 @@
             <span>10h Service/Day</span>
           </div>
           <div class="info-item price-highlight">
-            <span>¥100,000</span>
+            <span>¥80,000</span>
             <span style="font-size: 11px; font-weight: normal; color: #666;">/ night</span>
           </div>
         </div>
@@ -635,7 +635,7 @@
       } else {
         btnJpy.classList.add("active");
         btnPhp.classList.remove("active");
-        prices.forEach(el => el.textContent = el.getAttribute("data-jpy") || "¥100,000");
+        prices.forEach(el => el.textContent = el.getAttribute("data-jpy") || "¥80,000");
       }
     }
   </script>
